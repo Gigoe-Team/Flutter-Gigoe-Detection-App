@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/welcome_page.dart';
 
@@ -15,19 +17,18 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
+    Timer(const Duration(seconds: 3), () {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user == null) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/signUp-page', (route) => false);
+      } else {
+        Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
+      }
+    });
+
     super.initState();
-    // Timer untuk mengganti halaman setelah beberapa detik
-    Timer(
-      const Duration(seconds: 3),
-      () {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            // builder: (BuildContext context) => const BottomNavBar(),
-            builder: (BuildContext context) => const WelcomePage(),
-          ),
-        );
-      },
-    );
   }
 
   @override
