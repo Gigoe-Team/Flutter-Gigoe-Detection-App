@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gigoe_detection_app/features/presentation/bloc/classification_bloc.dart';
 import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/add_photo_page.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/home_page.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/login_page.dart';
 import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
 import 'features/presentation/pages/splash_page.dart';
@@ -43,10 +42,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => const SplashPage(),
-          '/main': (context) => MyHomePage(),
-          '/signIn-page': (context) => LoginPage(),
-          '/add_photo': (context) => AddPhoto(),
-          '/add_photos': (context) => AddPhoto(),
+          '/main': (context) => const MyHomePage(),
+          '/signIn-page': (context) => const LoginPage(),
+          '/add_photo': (context) => const AddPhoto(),
         },
       ),
     );
@@ -54,7 +52,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -63,6 +61,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return BottomNavBar();
+    return const BottomNavBar();
   }
 }

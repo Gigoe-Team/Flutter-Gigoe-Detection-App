@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -239,10 +240,19 @@ class _ProfilePageState extends State<ProfilePage> {
                         color: Color(0xff0E8388),
                       ),
                       const SizedBox(width: 20),
-                      Text(
-                        "Keluar",
-                        style: GoogleFonts.poppins(
-                            color: Colors.black, fontSize: 14),
+                      InkWell(
+                        child: SizedBox(
+                          width: 200,
+                          child: Text(
+                            "Keluar",
+                            style: GoogleFonts.poppins(
+                                color: Colors.black, fontSize: 14),
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, '/signIn-page', (route) => false);
+                        },
                       ),
                     ],
                   )

@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/add_photo_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddPatient extends StatefulWidget {
@@ -44,10 +44,12 @@ class _AddPatientState extends State<AddPatient> {
       'email': _emailController.text.trim(),
       'nomor': _nomorController.text.trim(),
     };
-    if (_namaController.text != "" || _namaController.text != null) {
+    if (_namaController.text.isNotEmpty) {
       dbRef.child('${_namaController.text.trim()}').set(datapasien);
     } else {
-      print("no data");
+      if (kDebugMode) {
+        print("no data");
+      }
     }
   }
 

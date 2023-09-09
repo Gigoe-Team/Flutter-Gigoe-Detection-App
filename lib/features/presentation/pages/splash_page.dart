@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/welcome_page.dart';
 
 // import 'package:gigoe_detection_app/Pages/welcome_page.dart';
 
@@ -22,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
 
       if (user == null) {
         Navigator.pushNamedAndRemoveUntil(
-            context, '/signUp-page', (route) => false);
+            context, '/signIn-page', (route) => false);
       } else {
         Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
       }

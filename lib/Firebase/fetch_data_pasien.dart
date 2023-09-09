@@ -105,8 +105,8 @@ class _FetchDataResultsState extends State<FetchDataResults> {
         showDialog<String>(
           context: context,
           builder: (BuildContext context) => AlertDialog(
-            backgroundColor: Color.fromARGB(255, 255, 255, 255),
-            title: Text(
+            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+            title: const Text(
               'Data pasien',
               textAlign: TextAlign.center,
             ),
@@ -115,7 +115,7 @@ class _FetchDataResultsState extends State<FetchDataResults> {
                 children: [
                   Container(
                     alignment: Alignment.center,
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: const Color.fromARGB(255, 255, 255, 255),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
