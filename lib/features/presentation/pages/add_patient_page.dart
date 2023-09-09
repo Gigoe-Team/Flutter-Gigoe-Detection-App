@@ -34,7 +34,7 @@ class _AddPatientState extends State<AddPatient> {
   get firestore => null;
 
   void _tambahpasien() {
-    Map<String, String> students = {
+    Map<String, String> datapasien = {
       'nik': _nikController.text.trim(),
       'nama': _namaController.text.trim(),
       'ttl': _lahirController.text.trim(),
@@ -44,9 +44,11 @@ class _AddPatientState extends State<AddPatient> {
       'email': _emailController.text.trim(),
       'nomor': _nomorController.text.trim(),
     };
-
-    // ignore: unnecessary_string_interpolations
-    dbRef.child('${_nikController.text}').set(students);
+    if (_namaController.text != "" || _namaController.text != null) {
+      dbRef.child('${_namaController.text.trim()}').set(datapasien);
+    } else {
+      print("no data");
+    }
   }
 
   @override
@@ -125,12 +127,8 @@ class _AddPatientState extends State<AddPatient> {
                   MaterialButton(
                     onPressed: () {
                       _tambahpasien();
-                      setState(() {});
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => const AddPhoto(),
-                        ),
-                      );
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/add_photo', (route) => false);
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
