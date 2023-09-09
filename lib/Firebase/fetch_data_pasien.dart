@@ -101,7 +101,89 @@ class _FetchDataResultsState extends State<FetchDataResults> {
           ),
         ),
       ),
-      onTap: () {},
+      onTap: () {
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+            title: Text(
+              'Data pasien',
+              textAlign: TextAlign.center,
+            ),
+            actions: <Widget>[
+              Column(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          results['nama'],
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey,
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          results['nik'],
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey,
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          results['alamat'],
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey,
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          results['email'],
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey,
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          results['gender'],
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey,
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          results['nomor'],
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey,
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          results['pekerjaan'],
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey,
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          results['ttl'],
+                          style: GoogleFonts.poppins(
+                            color: Colors.grey,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -114,9 +196,9 @@ class _FetchDataResultsState extends State<FetchDataResults> {
         query: FirebaseDatabase.instance.ref().child('data_pasien'),
         itemBuilder: (BuildContext context, DataSnapshot snapshot,
             Animation<double> animation, int index) {
-          Map results = snapshot.value as Map;
-          results['key'] = snapshot.key;
-          return listItem(results: results);
+          Map pasienMap = snapshot.value as Map;
+          pasienMap['key'] = snapshot.key;
+          return listItem(results: pasienMap);
         },
       ),
     );
