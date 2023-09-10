@@ -45,6 +45,7 @@ class _AddPatientState extends State<AddPatient> {
       'nomor': _nomorController.text.trim(),
     };
     if (_namaController.text.isNotEmpty) {
+      // ignore: unnecessary_string_interpolations
       dbRef.child('${_namaController.text.trim()}').set(datapasien);
     } else {
       if (kDebugMode) {
