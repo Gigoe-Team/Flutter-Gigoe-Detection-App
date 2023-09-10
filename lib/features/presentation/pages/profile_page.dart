@@ -253,26 +253,69 @@ class _ProfilePageState extends State<ProfilePage> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: const Text("Konfirmasi"),
-                                content: const Text(
-                                    "Anda yakin ingin keluar dari akun?"),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: const Text("Batal"),
-                                    onPressed: () {
-                                      Navigator.of(context)
-                                          .pop(); // Tutup dialog
-                                    },
-                                  ),
-                                  TextButton(
-                                    child: const Text("Ya"),
-                                    onPressed: () {
-                                      // Tambahkan tindakan untuk keluar dari akun di sini
-                                      Navigator.pushNamedAndRemoveUntil(context,
-                                          '/signIn-page', (route) => false);
-                                    },
-                                  ),
-                                ],
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      color: Colors.red[900], // Warna bar
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.warning,
+                                            color: Colors.white, // Warna ikon
+                                          ),
+                                          SizedBox(width: 10),
+                                          Text("Konfirmasi",
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(16.0),
+                                      child: Text(
+                                        "Anda yakin ingin keluar dari akun?",
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 14,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        TextButton(
+                                          child: Text(
+                                            "Batal",
+                                            style: GoogleFonts.poppins(
+                                              color: const Color(0xff2E4F4F),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pushNamedAndRemoveUntil(
+                                                context,
+                                                '/signIn-page',
+                                                (route) => false);
+                                          },
+                                          style: TextButton.styleFrom(
+                                              foregroundColor: Colors.red[900],
+                                              textStyle: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontSize: 12,
+                                              )),
+                                          child: const Text('Ya'),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               );
                             },
                           );

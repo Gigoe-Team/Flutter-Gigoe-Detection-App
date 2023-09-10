@@ -129,10 +129,10 @@ class _BottomNavBar extends State<BottomNavBar> {
               fontWeight: FontWeight.w600),
         ),
         content: Text(
-          'Anda yakin ingin keluar dari aplikasi?',
+          'Anda yakin ingin keluar dari aplikasi Gigoe Detection?',
           style: GoogleFonts.poppins(
               color: const Color.fromARGB(255, 0, 0, 0),
-              fontSize: 12,
+              fontSize: 14,
               fontWeight: FontWeight.w400),
         ),
         actions: <Widget>[
@@ -142,8 +142,8 @@ class _BottomNavBar extends State<BottomNavBar> {
               'Tidak',
               style: GoogleFonts.poppins(
                   color: const Color.fromARGB(255, 0, 0, 0),
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600),
+                  fontSize: 14,
+                  fontWeight: FontWeight.normal),
             ),
           ),
           TextButton(
@@ -155,7 +155,13 @@ class _BottomNavBar extends State<BottomNavBar> {
                   fontSize: 12,
                   fontWeight: FontWeight.w600),
             ),
-            child: const Text('Keluar'),
+            child: Text(
+              'Keluar',
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
           ),
         ],
       ),
