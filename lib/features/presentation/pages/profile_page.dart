@@ -261,11 +261,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                       padding: const EdgeInsets.all(16.0),
                                       child: Row(
                                         children: [
-                                          Icon(
+                                          const Icon(
                                             Icons.warning,
                                             color: Colors.white, // Warna ikon
                                           ),
-                                          SizedBox(width: 10),
+                                          const SizedBox(width: 10),
                                           Text("Konfirmasi",
                                               style: GoogleFonts.poppins(
                                                 color: Colors.white,
@@ -274,7 +274,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.all(16.0),
+                                      padding: const EdgeInsets.all(16.0),
                                       child: Text(
                                         "Anda yakin ingin keluar dari akun?",
                                         style: GoogleFonts.poppins(
