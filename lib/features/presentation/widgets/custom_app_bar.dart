@@ -157,10 +157,16 @@ class _CustomAppBarState extends State<CustomAppBar> {
                     // Posisi Icon Profil Pengguna
                     bottom: 10,
                     right: 10,
-                    child: Image.asset(
-                      'assets/icons/icon_profile.png',
-                      width: 40,
-                      height: 40,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context,
+                            '/profile-page'); // Ganti dengan rute halaman profil Anda
+                      },
+                      child: Image.asset(
+                        'assets/icons/icon_profile.png',
+                        width: 40,
+                        height: 40,
+                      ),
                     ),
                   ),
                   Positioned(
