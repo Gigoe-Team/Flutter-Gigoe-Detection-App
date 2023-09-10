@@ -148,13 +148,14 @@ class _BottomNavBar extends State<BottomNavBar> {
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: Text(
-              'Ya',
-              style: GoogleFonts.poppins(
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.red[900],
+              textStyle: GoogleFonts.poppins(
                   color: const Color.fromARGB(255, 0, 0, 0),
                   fontSize: 12,
                   fontWeight: FontWeight.w600),
             ),
+            child: const Text('Keluar'),
           ),
         ],
       ),

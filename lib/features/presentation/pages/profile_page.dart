@@ -240,19 +240,44 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       const SizedBox(width: 20),
                       InkWell(
-                        child: SizedBox(
-                          width: 200,
-                          child: Text(
-                            "Keluar",
-                            style: GoogleFonts.poppins(
-                                color: Colors.black, fontSize: 14),
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, '/signIn-page', (route) => false);
-                        },
-                      ),
+  child: SizedBox(
+    width: 200,
+    child: Text(
+      "Keluar",
+      style: GoogleFonts.poppins(
+          color: Colors.black, fontSize: 14),
+    ),
+  ),
+  onTap: () {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Konfirmasi"),
+          content: const Text("Anda yakin ingin keluar dari akun?"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("Batal"),
+              onPressed: () {
+                Navigator.of(context).pop(); // Tutup dialog
+              },
+            ),
+            TextButton(
+              child: const Text("Ya"),
+              onPressed: () {
+                // Tambahkan tindakan untuk keluar dari akun di sini
+                Navigator.pushNamedAndRemoveUntil(
+                  context, '/signIn-page', (route) => false
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
+  },
+),
+
                     ],
                   )
                 ],
