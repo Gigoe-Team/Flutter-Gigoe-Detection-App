@@ -83,7 +83,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
       var image = await boundary.toImage(pixelRatio: 3);
       ByteData? byteData = await image.toByteData(format: ImageByteFormat.png);
       Uint8List? uint8List = byteData?.buffer.asUint8List();
-
       await Share.file('QR Code', 'qr_code.png', uint8List!, 'image/png',
           text: 'Subhan Janura | WhatsApp | 085262820401');
     } catch (e) {
