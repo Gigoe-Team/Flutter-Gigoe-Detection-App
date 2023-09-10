@@ -106,76 +106,85 @@ class _FetchDataResultsState extends State<FetchDataResults> {
           context: context,
           builder: (BuildContext context) => AlertDialog(
             backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-            title: const Text(
-              'Data pasien',
+            title: Text(
+              'Data Pasien',
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+              ),
               textAlign: TextAlign.center,
             ),
             actions: <Widget>[
               Column(
                 children: [
-                  Container(
-                    alignment: Alignment.center,
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          results['nama'],
-                          style: GoogleFonts.poppins(
-                            color: Colors.grey,
-                            fontSize: 10,
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Container(
+                      height: 200,
+                      alignment: Alignment.centerLeft,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            results['nama'],
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        Text(
-                          results['nik'],
-                          style: GoogleFonts.poppins(
-                            color: Colors.grey,
-                            fontSize: 10,
+                          Text(
+                            results['nik'],
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        Text(
-                          results['alamat'],
-                          style: GoogleFonts.poppins(
-                            color: Colors.grey,
-                            fontSize: 10,
+                          Text(
+                            results['alamat'],
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        Text(
-                          results['email'],
-                          style: GoogleFonts.poppins(
-                            color: Colors.grey,
-                            fontSize: 10,
+                          Text(
+                            results['email'],
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        Text(
-                          results['gender'],
-                          style: GoogleFonts.poppins(
-                            color: Colors.grey,
-                            fontSize: 10,
+                          Text(
+                            results['gender'],
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        Text(
-                          results['nomor'],
-                          style: GoogleFonts.poppins(
-                            color: Colors.grey,
-                            fontSize: 10,
+                          Text(
+                            results['nomor'],
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        Text(
-                          results['pekerjaan'],
-                          style: GoogleFonts.poppins(
-                            color: Colors.grey,
-                            fontSize: 10,
+                          Text(
+                            results['pekerjaan'],
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        Text(
-                          results['ttl'],
-                          style: GoogleFonts.poppins(
-                            color: Colors.grey,
-                            fontSize: 10,
+                          Text(
+                            results['ttl'],
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
