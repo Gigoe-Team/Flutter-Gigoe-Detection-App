@@ -5,11 +5,14 @@ import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar
 import 'package:image_picker/image_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/bloc/classification_bloc.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/result_detection_page.dart';
 
+import '../bloc/classification_bloc.dart';
+
 class AddPhoto extends StatefulWidget {
-  const AddPhoto({Key? key}) : super(key: key);
+  const AddPhoto({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<AddPhoto> createState() => _AddPhotoState();
@@ -56,6 +59,8 @@ class _AddPhotoState extends State<AddPhoto> {
 
   @override
   Widget build(BuildContext context) {
+    final String name = ModalRoute.of(context)!.settings.arguments as String;
+
     return Scaffold(
       backgroundColor: const Color(0xffCBE4DE),
       appBar: AppBar(
@@ -185,7 +190,7 @@ class _AddPhotoState extends State<AddPhoto> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return const ResultDetectionPage();
+                                return ResultDetectionPage(name: name);
                               },
                             ),
                           );

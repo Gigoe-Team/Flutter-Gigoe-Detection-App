@@ -120,7 +120,7 @@ class _FetchDataResultsState extends State<FetchDataResults> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Container(
-                      height: 200,
+                      height: 230,
                       alignment: Alignment.centerLeft,
                       color: const Color.fromARGB(255, 255, 255, 255),
                       child: Column(
@@ -177,7 +177,21 @@ class _FetchDataResultsState extends State<FetchDataResults> {
                             ),
                           ),
                           Text(
-                            results['ttl'],
+                            "Total Karies ${results['total_karies']}",
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
+                          ),
+                          Text(
+                            "Total Hilang ${results['total_hilang']}",
+                            style: GoogleFonts.poppins(
+                              color: Colors.black,
+                              fontSize: 14,
+                            ),
+                          ),
+                          Text(
+                            "Total Tambal ${results['total_tambal']}",
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 14,

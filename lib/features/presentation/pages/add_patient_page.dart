@@ -131,7 +131,11 @@ class _AddPatientState extends State<AddPatient> {
                     onPressed: () {
                       _tambahpasien();
                       Navigator.pushNamedAndRemoveUntil(
-                          context, '/add_photo', (route) => false);
+                        context,
+                        '/add_photo',
+                        (route) => false,
+                        arguments: _namaController.text.toString(),
+                      );
                     },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),

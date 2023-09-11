@@ -1,14 +1,20 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gigoe_detection_app/features/domain/entities/prediction.dart';
 import 'package:gigoe_detection_app/features/presentation/bloc/classification_bloc.dart';
 
+import '../widgets/bottom_nav_bar.dart';
+
 class ResultDetectionPage extends StatefulWidget {
-  const ResultDetectionPage({super.key});
+  const ResultDetectionPage({super.key, required this.name});
+
+  final String name;
 
   @override
   State<ResultDetectionPage> createState() => _ResultDetectionPageState();
@@ -254,12 +260,21 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              onPressed: () {
-                Navigator.pop(context);
+              onPressed: () async {
+                await updateData(
+                  totalCaries: totalCaries,
+                  totalMissing: totalMissing,
+                  totalFilling: totalFilling,
+                );
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => const BottomNavBar(),
+                  ),
+                );
               },
               child: Center(
                 child: Text(
-                  "Kembali",
+                  "Kembali Dan Simpan",
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -271,6 +286,21 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
         ],
       ),
     );
+  }
+
+  updateData({
+    required totalCaries,
+    required totalMissing,
+    required totalFilling,
+  }) {
+    var pathName = widget.name.removeAllWhitespace;
+
+    DatabaseReference ref = FirebaseDatabase.instance.ref();
+    ref.child('data_pasien').child(pathName).update({
+      'total_karies': totalCaries,
+      'total_hilang': totalMissing,
+      'total_tambal': totalFilling
+    });
   }
 }
 
