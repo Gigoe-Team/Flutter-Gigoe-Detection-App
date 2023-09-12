@@ -156,8 +156,8 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                       return ResultDetectionCard(
                         imageBytes: state.frontImgUint8List,
                         caries: frontCaries.length,
-                        filledTooth: frontMissing.length,
-                        missingTooth: frontFilling.length,
+                        filledTooth: frontFilling.length,
+                        missingTooth: frontMissing.length,
                         title: "Gigi Depan",
                         subtitle: "PHOTO 1 OF 5",
                       );
@@ -171,8 +171,8 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                       return ResultDetectionCard(
                         imageBytes: state.rightImgUint8List,
                         caries: rightCaries.length,
-                        filledTooth: rightMissing.length,
-                        missingTooth: rightFilling.length,
+                        filledTooth: rightFilling.length,
+                        missingTooth: rightMissing.length,
                         title: "Gigi Kanan",
                         subtitle: "PHOTO 2 OF 5",
                       );
@@ -186,8 +186,8 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                       return ResultDetectionCard(
                         imageBytes: state.leftImgUint8List,
                         caries: leftCaries.length,
-                        filledTooth: leftMissing.length,
-                        missingTooth: leftFilling.length,
+                        filledTooth: leftFilling.length,
+                        missingTooth: leftMissing.length,
                         title: "Gigi Kiri",
                         subtitle: "PHOTO 3 OF 5",
                       );
@@ -201,8 +201,8 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                       return ResultDetectionCard(
                         imageBytes: state.upperImgUint8List,
                         caries: upperCaries.length,
-                        filledTooth: upperMissing.length,
-                        missingTooth: upperFilling.length,
+                        filledTooth: upperFilling.length,
+                        missingTooth: upperMissing.length,
                         title: "Gigi Atas",
                         subtitle: "PHOTO 4 OF 5",
                       );
@@ -216,8 +216,8 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                       return ResultDetectionCard(
                         imageBytes: state.lowerImgUint8List,
                         caries: lowerCaries.length,
-                        filledTooth: lowerMissing.length,
-                        missingTooth: lowerFilling.length,
+                        filledTooth: lowerFilling.length,
+                        missingTooth: lowerMissing.length,
                         title: "Gigi Bawah",
                         subtitle: "PHOTO 5 OF 5",
                       );
