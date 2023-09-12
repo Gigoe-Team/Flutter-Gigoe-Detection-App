@@ -177,21 +177,21 @@ class _FetchDataResultsState extends State<FetchDataResults> {
                             ),
                           ),
                           Text(
-                            "Total Karies ${results['total_karies']}",
+                            "Total Karies ${results['total_karies'] ?? '0'}",
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 14,
                             ),
                           ),
                           Text(
-                            "Total Hilang ${results['total_hilang']}",
+                            "Total Hilang ${results['total_hilang'] ?? '0'}",
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 14,
                             ),
                           ),
                           Text(
-                            "Total Tambal ${results['total_tambal']}",
+                            "Total Tambal ${results['total_tambal'] ?? '0'}",
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 14,
@@ -217,8 +217,12 @@ class _FetchDataResultsState extends State<FetchDataResults> {
       height: double.infinity,
       child: FirebaseAnimatedList(
         query: FirebaseDatabase.instance.ref().child('data_pasien'),
-        itemBuilder: (BuildContext context, DataSnapshot snapshot,
-            Animation<double> animation, int index) {
+        itemBuilder: (
+          BuildContext context,
+          DataSnapshot snapshot,
+          Animation<double> animation,
+          int index,
+        ) {
           Map pasienMap = snapshot.value as Map;
           pasienMap['key'] = snapshot.key;
           return listItem(results: pasienMap);
