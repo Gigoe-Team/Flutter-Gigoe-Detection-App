@@ -7,10 +7,10 @@ import '../entities/caries.dart';
 
 abstract class Repository {
   Future<Either<Failure, Caries>> frontImageClassification(String imageFront);
-  Future<Either<Failure, Caries>> leftImageClassification(String imageRight);
-  Future<Either<Failure, Caries>> rightImageClassification(String imageLeft);
+  Future<Either<Failure, Caries>> rightImageClassification(String imageRight);
+  Future<Either<Failure, Caries>> leftImageClassification(String imageLeft);
   Future<Either<Failure, Caries>> upperImageClassification(String imageUpper);
-  Future<Either<Failure, Caries>> lowerImageClassification(String imageUpper);
+  Future<Either<Failure, Caries>> lowerImageClassification(String imageLower);
 
   Future<Either<Failure, Uint8List>> imgFrontResponse(String imgFront);
   Future<Either<Failure, Uint8List>> imgRightResponse(String imgRight);
