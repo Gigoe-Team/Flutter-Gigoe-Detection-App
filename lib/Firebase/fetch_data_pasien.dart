@@ -122,7 +122,7 @@ class _FetchDataResultsState extends State<FetchDataResults> {
                     child: Container(
                       height: 230,
                       alignment: Alignment.centerLeft,
-                      color: const Color.fromARGB(255, 255, 255, 255),
+                      color: const Color(0xffffffff),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,6 +176,20 @@ class _FetchDataResultsState extends State<FetchDataResults> {
                               fontSize: 14,
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Container(
+                      height: 230,
+                      alignment: Alignment.centerLeft,
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Text(
                             "Total Karies ${results['total_karies']}",
                             style: GoogleFonts.poppins(
