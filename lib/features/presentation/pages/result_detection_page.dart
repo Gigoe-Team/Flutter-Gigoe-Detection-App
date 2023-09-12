@@ -3,7 +3,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gigoe_detection_app/features/domain/entities/prediction.dart';
@@ -294,10 +293,8 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
     required totalMissing,
     required totalFilling,
   }) {
-    var pathName = widget.name.removeAllWhitespace;
-
     DatabaseReference ref = FirebaseDatabase.instance.ref();
-    ref.child('data_pasien').child(pathName).update({
+    ref.child('data_pasien').child(widget.name).update({
       'total_karies': totalCaries,
       'total_hilang': totalMissing,
       'total_tambal': totalFilling

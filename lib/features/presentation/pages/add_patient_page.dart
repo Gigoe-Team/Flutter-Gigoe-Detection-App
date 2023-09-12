@@ -134,7 +134,7 @@ class _AddPatientState extends State<AddPatient> {
                         context,
                         '/add_photo',
                         (route) => false,
-                        arguments: _namaController.text.toString(),
+                        arguments: _namaController.text.trim(),
                       );
                     },
                     shape: RoundedRectangleBorder(
