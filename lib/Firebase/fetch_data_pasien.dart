@@ -118,9 +118,8 @@ class _FetchDataResultsState extends State<FetchDataResults> {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Container(
-                      height: 230,
                       alignment: Alignment.centerLeft,
                       color: const Color(0xffffffff),
                       child: Column(
@@ -131,7 +130,8 @@ class _FetchDataResultsState extends State<FetchDataResults> {
                             results['nama'],
                             style: GoogleFonts.poppins(
                               color: Colors.black,
-                              fontSize: 14,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                           Text(
@@ -180,32 +180,40 @@ class _FetchDataResultsState extends State<FetchDataResults> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 20),
+                  Text(
+                    'Kondisi Gigi',
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Container(
-                      height: 230,
                       alignment: Alignment.centerLeft,
-                      color: const Color.fromARGB(255, 255, 255, 255),
+                      color: const Color(0xffffffff),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Total Karies ${results['total_karies'] ?? '0'}",
+                            "Total Karies : ${results['total_karies'] ?? '0'}",
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 14,
                             ),
                           ),
                           Text(
-                            "Total Hilang ${results['total_hilang'] ?? '0'}",
+                            "Total Hilang : ${results['total_hilang'] ?? '0'}",
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 14,
                             ),
                           ),
                           Text(
-                            "Total Tambal ${results['total_tambal'] ?? '0'}",
+                            "Total Tambal : ${results['total_tambal'] ?? '0'}",
                             style: GoogleFonts.poppins(
                               color: Colors.black,
                               fontSize: 14,
