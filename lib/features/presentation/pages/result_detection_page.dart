@@ -266,6 +266,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                   totalMissing: totalMissing,
                   totalFilling: totalFilling,
                 );
+                // ignore: use_build_context_synchronously
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (BuildContext context) => const BottomNavBar(),
@@ -274,7 +275,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
               },
               child: Center(
                 child: Text(
-                  "Kembali Dan Simpan",
+                  "Kembali & Simpan",
                   style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
