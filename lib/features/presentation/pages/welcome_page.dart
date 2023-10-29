@@ -13,45 +13,41 @@ class WelcomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         alignment: Alignment.center,
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xff8EA6E1),
-              Color(0xff4FC0A6),
-            ],
-          ),
+          color: Color(0xffF3F9FB),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Logo aplikasi
             Image.asset(
-              'assets/images/logo.png', // Ganti dengan path gambar logo Anda
-              width: 100,
-              height: 100,
+              'assets/images/logo.png',
+              width: 180,
+              height: 40,
             ),
-            const SizedBox(height: 10),
-            // Deskripsi
+            const SizedBox(height: 20),
             Text(
-              'Aplikasi Perhitungan Pengalaman Karies Gigi',
+              'Aplikasi Pemindai dan Pencatat Pengalaman Gigi Karies',
               style: GoogleFonts.poppins(
-                  color: const Color(0xffffffff),
-                  fontSize: 14,
-                  fontWeight: FontWeight.normal),
+                  color: const Color(0xff000000),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            // Teks Selamat Datang
             Text(
-              'Selamat Datang!',
+              'Membantu dokter gigi dalam melakukan pemeriksaan dan pecatatan secara otomatis terhadap pengalaman gigi karies pada pasien',
               style: GoogleFonts.poppins(
-                  color: const Color(0xffffffff),
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+                  color: const Color(0xffA0A0A0),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40),
-            // Tombol "Mulai"
+            Image.asset(
+              'assets/images/dental.png',
+              width: 293,
+              height: 300,
+            ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(
@@ -61,9 +57,9 @@ class WelcomePage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                foregroundColor: const Color(0xffCBE4DE),
-                backgroundColor: const Color(0xff2E4F4F),
-                minimumSize: const Size(300, 50),
+                foregroundColor: const Color(0xff000000),
+                backgroundColor: const Color(0xff4E73AF),
+                minimumSize: const Size(230, 40),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
                     50,
@@ -71,15 +67,14 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'Mulai',
+                'Daftar Akun',
                 style: GoogleFonts.poppins(
                     color: const Color(0xffffffff),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400),
               ),
             ),
-            const SizedBox(height: 20),
-            // Tombol "Sudah Mempunyai Akun"
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(
@@ -89,9 +84,9 @@ class WelcomePage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                foregroundColor: const Color(0xff2E4F4F),
+                foregroundColor: const Color(0xff000000),
                 backgroundColor: const Color(0xFFFFFFFF),
-                minimumSize: const Size(300, 50),
+                minimumSize: const Size(230, 40),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
                     50,
@@ -101,9 +96,9 @@ class WelcomePage extends StatelessWidget {
               child: Text(
                 'Sudah mempunyai akun',
                 style: GoogleFonts.poppins(
-                    color: const Color(0xff000000),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500),
+                    color: const Color(0xff4E73AF),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400),
               ),
             ),
           ],
