@@ -9,7 +9,6 @@ import 'package:gigoe_detection_app/features/presentation/pages/login_page.dart'
 import 'package:gigoe_detection_app/features/presentation/pages/profile_page.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/welcome_page.dart';
 import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
-import 'features/presentation/pages/splash_page.dart';
 import 'di.dart' as di;
 
 void main() async {
@@ -43,8 +42,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
-          '/': (context) => const WelcomePage(),
-          '/main': (context) => const MyHomePage(),
+          // '/': (context) => const WelcomePage(),
+          '/': (context) => const MyHomePage(),
+          // '/main': (context) => const MyHomePage(),
           '/signIn-page': (context) => const LoginPage(),
           '/add_photo': (context) => const AddPhoto(),
           '/profile-page': (context) => const ProfilePage(),
