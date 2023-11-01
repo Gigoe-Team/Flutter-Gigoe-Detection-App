@@ -7,7 +7,6 @@ import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc
 import 'package:gigoe_detection_app/features/presentation/pages/add_photo_page.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/login_page.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/profile_page.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/welcome_page.dart';
 import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
 import 'di.dart' as di;
 
