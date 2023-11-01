@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffCBE4DE),
+      backgroundColor: const Color(0xFFF3F9FB),
       body: Stack(
         children: [
           CustomImgSlider(),
