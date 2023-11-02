@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
 
       if (user == null) {
         Navigator.pushNamedAndRemoveUntil(
-            context, '/signIn-page', (route) => false);
+            context, '/welcome', (route) => false);
       } else {
         Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
       }
@@ -49,9 +50,8 @@ class _SplashPageState extends State<SplashPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Logo aplikasi di tengah layar
                   Image.asset(
-                    'assets/images/logo.png', // Ganti dengan path gambar logo Anda
+                    'assets/images/logo.png',
                     width: 100,
                     height: 100,
                   ),

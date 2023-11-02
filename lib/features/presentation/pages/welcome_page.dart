@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../widgets/custom_button.dart';
 import 'login_page.dart';
 import 'register_page.dart';
 
@@ -48,7 +50,7 @@ class WelcomePage extends StatelessWidget {
               height: 300,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
+            CustomButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
@@ -56,23 +58,7 @@ class WelcomePage extends StatelessWidget {
                   ),
                 );
               },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: const Color(0xff000000),
-                backgroundColor: const Color(0xff4E73AF),
-                minimumSize: const Size(230, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    50,
-                  ),
-                ),
-              ),
-              child: Text(
-                'Daftar Akun',
-                style: GoogleFonts.poppins(
-                    color: const Color(0xffffffff),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400),
-              ),
+              btnText: "Daftar Akun",
             ),
             const SizedBox(height: 10),
             ElevatedButton(

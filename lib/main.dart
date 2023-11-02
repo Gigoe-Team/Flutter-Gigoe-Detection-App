@@ -2,23 +2,25 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/bloc/classification_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/add_photo_page.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/login_page.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/profile_page.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/welcome_page.dart';
-import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
-import 'features/presentation/pages/splash_page.dart';
+
 import 'di.dart' as di;
+import 'features/presentation/bloc/classification_bloc.dart';
+import 'features/presentation/bloc/data_chart_bloc.dart';
+import 'features/presentation/bloc/img_response_bloc.dart';
+import 'features/presentation/pages/add_photo_page.dart';
+import 'features/presentation/pages/login_page.dart';
+import 'features/presentation/pages/profile_page.dart';
+import 'features/presentation/pages/splash_page.dart';
+import 'features/presentation/pages/welcome_page.dart';
+import 'features/presentation/widgets/bottom_nav_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
+
   SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-    ),
+    const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
   );
 
   await di.setup();
@@ -39,11 +41,16 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (_) => di.locator<ImgResponseBloc>(),
         ),
+        BlocProvider(
+          create: (_) => di.locator<DataChartBloc>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(useMaterial3: true),
         routes: {
-          '/': (context) => const WelcomePage(),
+          '/': (context) => const SplashPage(),
+          '/welcome': (context) => const WelcomePage(),
           '/main': (context) => const MyHomePage(),
           '/signIn-page': (context) => const LoginPage(),
           '/add_photo': (context) => const AddPhoto(),

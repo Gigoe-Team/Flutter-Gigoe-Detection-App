@@ -2,8 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gigoe_detection_app/Firebase/auth.dart';
-import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
+
+import '../../../Firebase/auth.dart';
+import '../widgets/bottom_nav_bar.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -34,16 +35,14 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: const Color(0xffA0BEE0),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Container(
+            SizedBox(
               width: double.infinity,
               height: size.height - 450,
-              decoration: const BoxDecoration(
-                color: Color(0xffA0BEE0),
-              ),
               child: Image.asset(
                 'assets/images/doctor_login.png',
                 height: 350,
@@ -52,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Container(
-              width: 360,
+              width: double.maxFinite,
               height: 450,
               decoration: const ShapeDecoration(
                 color: Color(0xFF4E73AF),

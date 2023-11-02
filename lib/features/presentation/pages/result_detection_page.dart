@@ -3,11 +3,11 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gigoe_detection_app/features/domain/entities/prediction.dart';
-import 'package:gigoe_detection_app/features/presentation/bloc/classification_bloc.dart';
 
+import '../../domain/entities/prediction.dart';
+import '../bloc/classification_bloc.dart';
+import '../bloc/img_response_bloc.dart';
 import '../widgets/bottom_nav_bar.dart';
 
 class ResultDetectionPage extends StatefulWidget {

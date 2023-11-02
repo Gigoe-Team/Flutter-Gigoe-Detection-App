@@ -1,13 +1,14 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/result_detection_page.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../bloc/classification_bloc.dart';
+import '../bloc/img_response_bloc.dart';
+import '../widgets/bottom_nav_bar.dart';
+import 'result_detection_page.dart';
 
 class AddPhoto extends StatefulWidget {
   const AddPhoto({

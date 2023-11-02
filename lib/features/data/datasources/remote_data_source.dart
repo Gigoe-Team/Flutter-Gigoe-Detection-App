@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import '../../../core/error/exceptions.dart';
 import '../models/caries_model.dart';
 
-abstract class RemoteDataSource {
+abstract class PredictRemoteDataSource {
   Future<CariesModel> frontImageClassification(String imageFront);
   Future<CariesModel> rightImageClassification(String imageRight);
   Future<CariesModel> leftImageClassification(String imageLeft);
@@ -23,10 +23,10 @@ const jsonFormat = 'json';
 const imageFormat = 'image&labels=on&stroke=10';
 const apiURL = '$baseApi?api_key=$apiKeys&confidence=40&overlap=30&format=';
 
-class RemoteDataSourceImpl implements RemoteDataSource {
+class PredictRemoteDataSourceImpl implements PredictRemoteDataSource {
   final Dio dio;
 
-  RemoteDataSourceImpl({required this.dio});
+  PredictRemoteDataSourceImpl(this.dio);
 
   @override
   Future<CariesModel> frontImageClassification(String imageFront) {

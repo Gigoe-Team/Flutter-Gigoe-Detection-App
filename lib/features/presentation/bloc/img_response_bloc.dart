@@ -1,13 +1,13 @@
 import 'dart:typed_data';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:gigoe_detection_app/features/domain/usecases/lower_tooth_class.dart';
-import 'package:gigoe_detection_app/features/domain/usecases/right_tooth_class.dart';
-import 'package:gigoe_detection_app/features/domain/usecases/upper_tooth_class.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/usecases/front_tooth_class.dart';
 import '../../domain/usecases/left_tooth_class.dart';
+import '../../domain/usecases/lower_tooth_class.dart';
+import '../../domain/usecases/right_tooth_class.dart';
+import '../../domain/usecases/upper_tooth_class.dart';
 
 part 'img_response_event.dart';
 part 'img_response_state.dart';

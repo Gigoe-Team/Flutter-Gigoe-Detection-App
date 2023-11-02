@@ -6,13 +6,13 @@ import 'package:dartz/dartz.dart';
 import '../../../core/error/exceptions.dart';
 import '../../../core/error/failures.dart';
 import '../../domain/entities/caries.dart';
-import '../../domain/repositories/repository.dart';
+import '../../domain/repositories/predict_repository.dart';
 import '../datasources/remote_data_source.dart';
 
-class RepositoryImpl implements Repository {
-  final RemoteDataSource dataSource;
+class PredictRepositoryImpl implements PredictRepository {
+  final PredictRemoteDataSource dataSource;
 
-  RepositoryImpl({required this.dataSource});
+  PredictRepositoryImpl({required this.dataSource});
 
   @override
   Future<Either<Failure, Caries>> frontImageClassification(

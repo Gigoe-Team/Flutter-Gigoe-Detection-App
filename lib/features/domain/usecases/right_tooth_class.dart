@@ -4,10 +4,10 @@ import 'package:dartz/dartz.dart';
 
 import '../../../core/error/failures.dart';
 import '../entities/caries.dart';
-import '../repositories/repository.dart';
+import '../repositories/predict_repository.dart';
 
 class CreateRightImageClassification {
-  final Repository repository;
+  final PredictRepository repository;
 
   CreateRightImageClassification(this.repository);
 
@@ -17,7 +17,7 @@ class CreateRightImageClassification {
 }
 
 class RightImageResponse {
-  final Repository repository;
+  final PredictRepository repository;
 
   RightImageResponse(this.repository);
 

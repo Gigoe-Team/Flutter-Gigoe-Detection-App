@@ -1,7 +1,7 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:date_time_picker/date_time_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddPatient extends StatefulWidget {
@@ -105,6 +105,7 @@ class _AddPatientState extends State<AddPatient> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _buildNikField("NIK", _nikController),
+              const SizedBox(height: 15),
               _buildInputField(
                   "Nama Pasien", TextInputType.text, _namaController),
               _buildDateField("Tanggal Lahir", _lahirController),
@@ -200,61 +201,39 @@ class _AddPatientState extends State<AddPatient> {
   }
 
   Widget _buildNikField(String hintText, TextEditingController controller) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            hintText,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
+    return TextFormField(
+      controller: _nikController,
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+        hintText: "Masukan NIK",
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.all(10),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            width: 2,
+            color: Colors.black,
           ),
-          SizedBox(
-            height: 50,
-            child: Column(
-              children: [
-                TextFormField(
-                  controller: _nikController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    contentPadding: const EdgeInsets.all(10),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
-                        width: 2,
-                        color: Colors.black,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
-                        width: 2,
-                        color: Color(0xff0E8388),
-                      ),
-                    ),
-                  ),
-                  // Fungsi validasi NIK
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'NIK tidak boleh kosong';
-                    }
-                    if (value.length != 16) {
-                      return 'NIK harus terdiri dari 16 karakter';
-                    }
-                    return null;
-                  },
-                  onSaved: (val) {},
-                ),
-              ],
-            ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            width: 2,
+            color: Color(0xff0E8388),
           ),
-        ],
+        ),
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'NIK tidak boleh kosong';
+        }
+        if (value.length != 16) {
+          return 'NIK harus terdiri dari 16 karakter';
+        }
+        return null;
+      },
+      onSaved: (val) {},
     );
   }
 

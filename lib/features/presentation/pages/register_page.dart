@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../widgets/custom_button.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -22,16 +24,14 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: const Color(0xffA0BEE0),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Container(
+            SizedBox(
               width: double.infinity,
               height: size.height - 450,
-              decoration: const BoxDecoration(
-                color: Color(0xffA0BEE0),
-              ),
               child: Image.asset(
                 'assets/images/doctor_register.png',
                 height: 350,
@@ -40,8 +40,8 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             Container(
-              width: 360,
-              height: 450,
+              width: double.maxFinite,
+              height: MediaQuery.of(context).size.height * 0.58,
               decoration: const ShapeDecoration(
                 color: Color(0xFF4E73AF),
                 shape: RoundedRectangleBorder(
@@ -155,103 +155,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       borderRadius: BorderRadius.circular(50),
                       color: const Color(0xffffffff),
                     ),
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        try {
-                          UserCredential userCredential = await FirebaseAuth
-                              .instance
-                              .createUserWithEmailAndPassword(
-                            email: email.text.trim(),
-                            password: password.text.trim(),
-                          );
-                          // Get the user's unique ID
-                          String userId = userCredential.user!.uid;
-                          // Create a document reference for the user
-                          DocumentReference userDocRef = FirebaseFirestore
-                              .instance
-                              .collection('users')
-                              .doc(userId);
-                          await userDocRef.set(
-                            {
-                              'name': nama.text.trim(),
-                              'email': email.text.trim(),
-                            },
-                          );
-                          // ignore: use_build_context_synchronously
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const LoginPage(),
-                            ),
-                          );
-                        } catch (e) {
-                          showDialog(
-                            context: context,
-                            builder: (context) => Dialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Container(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(
-                                      'Kesalahan',
-                                      style: GoogleFonts.poppins(
-                                          color: const Color.fromARGB(
-                                              255, 0, 0, 0),
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(height: 10),
-                                    Text(
-                                      'Data tidak boleh kosong atau data sudah terdaftar!',
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.poppins(
-                                          color: const Color.fromARGB(
-                                              255, 0, 0, 0),
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                    const SizedBox(height: 20),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(
-                                            context); // Close the dialog
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              const Color(0xff0DAABC)),
-                                      child: Text(
-                                        'OK',
-                                        style: GoogleFonts.poppins(
-                                            color: const Color(0xffffffff),
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                      ),
-                      child: Text(
-                        'Buat Akun',
-                        style: GoogleFonts.poppins(
-                            color: const Color(0xFF4E73AF),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400),
-                      ),
+                    child: CustomButton(
+                      btnText: "Buat Akun",
+                      backgroundColor: Colors.white,
+                      textColor: const Color(0xff4E73AF),
+                      minimumSize: const Size(230, 58),
+                      onPressed: () => onSubmit(),
                     ),
                   ),
                   const SizedBox(height: 30),
@@ -288,6 +197,85 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  onSubmit() async {
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email.text.trim(),
+        password: password.text.trim(),
+      );
+      // Get the user's unique ID
+      String userId = userCredential.user!.uid;
+      // Create a document reference for the user
+      DocumentReference userDocRef =
+          FirebaseFirestore.instance.collection('users').doc(userId);
+      await userDocRef.set(
+        {
+          'name': nama.text.trim(),
+          'email': email.text.trim(),
+        },
+      );
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (BuildContext context) => const LoginPage(),
+        ),
+      );
+    } catch (e) {
+      warning();
+    }
+  }
+
+  warning() {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'Kesalahan',
+                style: GoogleFonts.poppins(
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'Data tidak boleh kosong atau data sudah terdaftar!',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the dialog
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff0DAABC)),
+                child: Text(
+                  'OK',
+                  style: GoogleFonts.poppins(
+                      color: const Color(0xffffffff),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

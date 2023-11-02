@@ -4,10 +4,10 @@ import 'package:dartz/dartz.dart';
 
 import '../../../core/error/failures.dart';
 import '../entities/caries.dart';
-import '../repositories/repository.dart';
+import '../repositories/predict_repository.dart';
 
 class CreateFrontImageClassification {
-  final Repository repository;
+  final PredictRepository repository;
 
   CreateFrontImageClassification(this.repository);
 
@@ -17,7 +17,7 @@ class CreateFrontImageClassification {
 }
 
 class FrontImageResponse {
-  final Repository repository;
+  final PredictRepository repository;
 
   FrontImageResponse(this.repository);
 

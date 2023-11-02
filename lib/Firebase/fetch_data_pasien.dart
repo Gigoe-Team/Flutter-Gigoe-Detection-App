@@ -114,14 +114,13 @@ class _FetchDataResultsState extends State<FetchDataResults> {
               ),
               textAlign: TextAlign.center,
             ),
-            actions: <Widget>[
+            actions: [
               Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      color: const Color(0xffffffff),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,7 +192,6 @@ class _FetchDataResultsState extends State<FetchDataResults> {
                     padding: const EdgeInsets.all(20),
                     child: Container(
                       alignment: Alignment.centerLeft,
-                      color: const Color(0xffffffff),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,

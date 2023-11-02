@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:gigoe_detection_app/features/domain/entities/caries.dart';
 
+import '../../domain/entities/caries.dart';
 import 'prediction_model.dart';
 
 class CariesModel extends Equatable {
