@@ -138,7 +138,6 @@ class _HomePageState extends State<HomePage> {
             child: BlocBuilder<DataChartBloc, DataChartState>(
               builder: (context, state) {
                 if (state is DataChartHasData) {
-                  print(state);
                   return CustomChart(result: state.datas);
                 }
                 return const SizedBox();
