@@ -68,6 +68,7 @@ flutter:
     - assets/images/dental.png
     - assets/images/doctor_register.png
     - assets/images/doctor_login.png
+    - assets/images/statistik.png
   # An image asset can refer toeeee en one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
