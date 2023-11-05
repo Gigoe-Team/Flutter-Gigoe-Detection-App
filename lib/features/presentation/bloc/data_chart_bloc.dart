@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../../domain/usecases/get_data_chart.dart';
+import 'package:gigoe_detection_app/features/domain/usecases/get_data_chart.dart';
 
 part 'data_chart_event.dart';
 part 'data_chart_state.dart';
