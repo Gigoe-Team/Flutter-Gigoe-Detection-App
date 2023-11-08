@@ -1,11 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/data_chart_bloc.dart';
-import '../widgets/custom_chart.dart';
+import 'package:gigoe_detection_app/features/presentation/bloc/data_chart_bloc.dart';
+import 'package:gigoe_detection_app/features/presentation/widgets/custom_chart.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../../core/utils/app_colors.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -31,23 +30,18 @@ class _HomePageState extends State<HomePage> {
     ];
 
     return Scaffold(
-      backgroundColor: const Color(0xffCBE4DE),
+      backgroundColor: const Color(0xFFF3F9FB),
       appBar: AppBar(
         forceMaterialTransparency: true,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(30),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              'assets/images/logo.png',
+              fit: BoxFit.contain,
+              height: 40,
             ),
-            gradient: LinearGradient(
-              colors: [
-                Color(0xff2E4F4F),
-                Color(0xff0E8388),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
+          ],
         ),
       ),
       body: ListView(
@@ -64,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                 width: MediaQuery.of(context).size.width / 1.12,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
-                  color: AppColors.kBlueColor,
+                  color: AppColors.softBlue,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,15 +69,15 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           'Halo,',
                           style: GoogleFonts.poppins(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                         Text(
-                          'Drg. Muhammad Fulan,',
+                          'Drg. Muhammad Fulan',
                           style: GoogleFonts.poppins(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
@@ -110,9 +104,15 @@ class _HomePageState extends State<HomePage> {
             options: CarouselOptions(
               height: 150,
               initialPage: 0,
+              autoPlay: true,
               autoPlayInterval: const Duration(seconds: 5),
               enlargeCenterPage: true,
               enableInfiniteScroll: true,
+              // onPageChanged: (index, reason) {
+              //   if (kDebugMode) {
+              //     print('Halaman berubah ke: $index');
+              //   }
+              // },
             ),
           ),
           Padding(
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  "Hasil Perhitungan Pengalaman Karies dalam\nbentuk Grafik berdasarkan jumlah Pasien,\nWilayah dan gender.",
+                  "Visualisasi data pengalaman karies dalam\nbentuk grafik berdasarkan wilayah dan\njumlah total gigi dmf dari semua pasien.",
                   style: GoogleFonts.poppins(
                       fontSize: 13, fontWeight: FontWeight.normal),
                 ),
