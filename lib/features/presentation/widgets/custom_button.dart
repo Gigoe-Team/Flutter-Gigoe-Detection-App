@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     this.btnText,
-    this.foregroundColor = const Color(0xff000000),
-    this.backgroundColor = const Color(0xff4E73AF),
+    this.foregroundColor = AppColors.darkBlue,
+    this.backgroundColor = AppColors.primaryBlue,
     this.onPressed,
-    this.minimumSize = const Size(230, 48),
+    this.minimumSize = const Size(230, 45),
     this.textColor = Colors.white,
   });
 
