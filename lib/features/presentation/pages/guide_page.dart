@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GuidePage extends StatefulWidget {
@@ -15,15 +16,15 @@ class _GuidePageState extends State<GuidePage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color(0xFFF3F9FB),
+      backgroundColor: AppColors.softWhite,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.softWhite,
         elevation: 0,
         toolbarHeight: 80,
         title: Text(
           "Panduan Penggunaan",
           style: GoogleFonts.poppins(
-              color: const Color(0xff4E73AF),
+              color: AppColors.primaryBlue,
               fontSize: 18,
               fontWeight: FontWeight.w500),
         ),
@@ -34,14 +35,6 @@ class _GuidePageState extends State<GuidePage> {
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30),
             ),
-            // gradient: LinearGradient(
-            //   colors: [
-            //     Color(0xff2E4F4F),
-            //     Color(0xff0E8388),
-            //   ],
-            //   begin: Alignment.topCenter,
-            //   end: Alignment.bottomCenter,
-            // ),
           ),
         ),
       ),
