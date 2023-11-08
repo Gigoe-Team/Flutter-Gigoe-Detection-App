@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../../Firebase/auth.dart';
-import '../widgets/bottom_nav_bar.dart';
+import 'package:gigoe_detection_app/Firebase/auth.dart';
+import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: const Color(0xffA0BEE0),
+      backgroundColor: AppColors.softBlue,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -52,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Container(
               width: double.maxFinite,
-              height: 450,
+              height: MediaQuery.of(context).size.height * 0.60,
               decoration: const ShapeDecoration(
                 color: Color(0xFF4E73AF),
                 shape: RoundedRectangleBorder(
@@ -152,7 +152,6 @@ class _LoginPageState extends State<LoginPage> {
                             email: email.text.trim(),
                             password: password.text.trim(),
                           );
-                          // Authentication successful, navigate to the home page or perform any desired actions
                           // ignore: use_build_context_synchronously
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
@@ -176,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                      'Kesalahan',
+                                      'Kesalahan!',
                                       style: GoogleFonts.poppins(
                                           color: const Color.fromARGB(
                                               255, 0, 0, 0),
@@ -196,12 +195,11 @@ class _LoginPageState extends State<LoginPage> {
                                     const SizedBox(height: 20),
                                     ElevatedButton(
                                       onPressed: () {
-                                        Navigator.pop(
-                                            context); // Close the dialog
+                                        Navigator.pop(context);
                                       },
                                       style: ElevatedButton.styleFrom(
                                           backgroundColor:
-                                              const Color(0xff0DAABC)),
+                                              AppColors.primaryBlue),
                                       child: Text(
                                         'OK',
                                         style: GoogleFonts.poppins(
