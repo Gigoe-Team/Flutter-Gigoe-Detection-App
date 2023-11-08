@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/custom_button.dart';
@@ -52,40 +53,43 @@ class WelcomePage extends StatelessWidget {
             const SizedBox(height: 20),
             CustomButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const RegisterPage(),
-                  ),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return const RegisterPage();
+                  }),
                 );
               },
+              // onPressed: () {
+              //   Navigator.of(context).pushReplacement(
+              //     MaterialPageRoute(
+              //       builder: (BuildContext context) => const RegisterPage(),
+              //     ),
+              //   );
+              // },
               btnText: "Daftar Akun",
             ),
             const SizedBox(height: 10),
-            ElevatedButton(
+            CustomButton(
               onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const LoginPage(),
-                  ),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return const LoginPage();
+                  }),
                 );
               },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: const Color(0xff000000),
-                backgroundColor: const Color(0xFFFFFFFF),
-                minimumSize: const Size(230, 40),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    50,
-                  ),
-                ),
-              ),
-              child: Text(
-                'Sudah mempunyai akun',
-                style: GoogleFonts.poppins(
-                    color: const Color(0xff4E73AF),
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400),
-              ),
+              btnText: "Sudah mempunyai akun",
+              foregroundColor: AppColors.darkBlue,
+              backgroundColor: Colors.white,
+              textColor: AppColors.primaryBlue,
+              // onPressed: () {
+              //   Navigator.of(context).pushReplacement(
+              //     MaterialPageRoute(
+              //       builder: (BuildContext context) => const LoginPage(),
+              //     ),
+              //   );
+              // },
             ),
           ],
         ),
