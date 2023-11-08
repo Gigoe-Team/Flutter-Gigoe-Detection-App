@@ -2,6 +2,7 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddPatient extends StatefulWidget {
@@ -68,15 +69,15 @@ class _AddPatientState extends State<AddPatient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF3F9FB),
+      backgroundColor: AppColors.softWhite,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.softWhite,
         elevation: 0,
         toolbarHeight: 80,
         title: Text(
           "Tambah  Pasien",
           style: GoogleFonts.poppins(
-              color: const Color(0xFF4E73AF),
+              color: AppColors.primaryBlue,
               fontSize: 18,
               fontWeight: FontWeight.w500),
         ),
@@ -87,14 +88,6 @@ class _AddPatientState extends State<AddPatient> {
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30),
             ),
-            // gradient: LinearGradient(
-            //   colors: [
-            //     Color(0xff2E4F4F),
-            //     Color(0xff0E8388),
-            //   ],
-            //   begin: Alignment.topCenter,
-            //   end: Alignment.bottomCenter,
-            // ),
           ),
         ),
       ),
