@@ -37,17 +37,7 @@ class _FetchDataResultsState extends State<FetchDataResults> {
             padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: Row(
               children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(50),
-                    ),
-                  ),
-                  width: 50,
-                  height: 50,
-                  child: Image.asset('assets/icons/icon_profile.png'),
-                ),
-                const SizedBox(width: 20),
+                const SizedBox(width: 10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
