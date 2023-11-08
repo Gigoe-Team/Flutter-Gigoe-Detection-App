@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
+import 'package:gigoe_detection_app/features/presentation/pages/add_patient_page.dart';
+import 'package:gigoe_detection_app/features/presentation/pages/guide_page.dart';
+import 'package:gigoe_detection_app/features/presentation/pages/history_page.dart';
+import 'package:gigoe_detection_app/features/presentation/pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../pages/add_patient_page.dart';
-import '../pages/guide_page.dart';
-import '../pages/history_page.dart';
-import '../pages/home_page.dart';
-// import '../pages/profile_page.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -23,7 +22,6 @@ class _BottomNavBar extends State<BottomNavBar> {
     const GuidePage(),
     const AddPatient(),
     const HistoryPage(),
-    // const ProfilePage(),
   ];
 
   @override
@@ -31,60 +29,61 @@ class _BottomNavBar extends State<BottomNavBar> {
     Size size = MediaQuery.of(context).size;
 
     Widget buildButtonBar() {
-      return Align(
-        alignment: Alignment.bottomCenter,
-        child: Container(
-          margin: const EdgeInsets.all(10),
-          height: size.width * .170,
-          decoration: BoxDecoration(
-            color: const Color(0xFF4E73AF),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: ListView.builder(
-            itemCount: 4,
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.symmetric(
-              horizontal: size.width * .024,
+      return WillPopScope(
+        onWillPop: _onBackPressed,
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            margin: const EdgeInsets.all(10),
+            height: size.width * .170,
+            decoration: BoxDecoration(
+              color: AppColors.primaryBlue,
+              borderRadius: BorderRadius.circular(20),
             ),
-            itemBuilder: (context, index) => InkWell(
-              onTap: () {
-                setState(
-                  () {
-                    currentIndex = index;
-                  },
-                );
-              },
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  AnimatedContainer(
-                    duration: const Duration(milliseconds: 2000),
-                    curve: Curves.fastLinearToSlowEaseIn,
-                    margin: EdgeInsets.only(
-                      bottom: index == currentIndex ? 0 : size.width * .029,
-                      right: size.width * .0422,
-                      left: size.width * .0422,
-                    ),
-                    width: size.width * .128,
-                    height: index == currentIndex ? size.width * .014 : 0,
-                    decoration: const BoxDecoration(
-                      color: Color(0xff1C3557),
-                      borderRadius: BorderRadius.vertical(
-                        bottom: Radius.circular(10),
+            child: ListView.builder(
+              itemCount: 4,
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(
+                horizontal: size.width * .024,
+              ),
+              itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  setState(
+                    () {
+                      currentIndex = index;
+                    },
+                  );
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AnimatedContainer(
+                      duration: const Duration(milliseconds: 2000),
+                      curve: Curves.fastLinearToSlowEaseIn,
+                      margin: EdgeInsets.only(
+                        bottom: index == currentIndex ? 0 : size.width * .029,
+                        right: size.width * .0422,
+                        left: size.width * .0422,
+                      ),
+                      width: size.width * .128,
+                      height: index == currentIndex ? size.width * .014 : 0,
+                      decoration: const BoxDecoration(
+                        color: AppColors.darkBlue,
+                        borderRadius: BorderRadius.vertical(
+                          bottom: Radius.circular(10),
+                        ),
                       ),
                     ),
-                  ),
-                  Icon(
-                    listOfIcon[index],
-                    size: size.width * .076,
-                    color: index == currentIndex
-                        ? const Color(0xff1C3557)
-                        : Colors.white,
-                  ),
-                  SizedBox(height: size.width * .03),
-                ],
+                    Icon(
+                      listOfIcon[index],
+                      size: size.width * .076,
+                      color: index == currentIndex
+                          ? AppColors.darkBlue
+                          : AppColors.softWhite,
+                    ),
+                    SizedBox(height: size.width * .03),
+                  ],
+                ),
               ),
             ),
           ),
@@ -100,50 +99,6 @@ class _BottomNavBar extends State<BottomNavBar> {
         ],
       ),
     );
-
-    // return WillPopScope(
-    //   onWillPop: _onBackPressed,
-    //   child: Scaffold(
-    //     body: _pages[_currentIndex],
-    //     bottomNavigationBar: BottomNavigationBar(
-    //       currentIndex: _currentIndex,
-    //       onTap: (index) {
-    //         setState(
-    //           () {
-    //             _currentIndex = index;
-    //           },
-    //         );
-    //       },
-    //       items: const [
-    //         BottomNavigationBarItem(
-    //           icon: Icon(Icons.home_rounded),
-    //           label: 'Beranda',
-    //           backgroundColor: Color(0xff0e8388),
-    //         ),
-    //         BottomNavigationBarItem(
-    //           icon: Icon(Icons.menu_book_rounded),
-    //           label: 'Panduan',
-    //           backgroundColor: Color(0xff0e8388),
-    //         ),
-    //         BottomNavigationBarItem(
-    //           icon: Icon(Icons.add_box_rounded),
-    //           label: 'Tambahkan',
-    //           backgroundColor: Color(0xff0e8388),
-    //         ),
-    //         BottomNavigationBarItem(
-    //           icon: Icon(Icons.history_rounded),
-    //           label: 'Riwayat',
-    //           backgroundColor: Color(0xff0e8388),
-    //         ),
-    //         // BottomNavigationBarItem(
-    //         //   icon: Icon(Icons.person_rounded),
-    //         //   label: 'Profil',
-    //         //   backgroundColor: Color(0xff0e8388),
-    //         // ),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 
   List<IconData> listOfIcon = [
@@ -153,11 +108,16 @@ class _BottomNavBar extends State<BottomNavBar> {
     Icons.history_rounded,
   ];
 
-  // ignore: unused_element
   Future<bool> _onBackPressed() {
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: AppColors.softWhite,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
         title: Text(
           'Konfirmasi Keluar',
           style: GoogleFonts.poppins(
@@ -166,7 +126,7 @@ class _BottomNavBar extends State<BottomNavBar> {
               fontWeight: FontWeight.w600),
         ),
         content: Text(
-          'Anda yakin ingin keluar dari aplikasi Gigoe Detection?',
+          'Apakah Anda yakin ingin keluar dari aplikasi Gigoe Detection?',
           style: GoogleFonts.poppins(
               color: const Color.fromARGB(255, 0, 0, 0),
               fontSize: 14,
@@ -180,7 +140,7 @@ class _BottomNavBar extends State<BottomNavBar> {
               style: GoogleFonts.poppins(
                   color: const Color.fromARGB(255, 0, 0, 0),
                   fontSize: 14,
-                  fontWeight: FontWeight.normal),
+                  fontWeight: FontWeight.w500),
             ),
           ),
           TextButton(
@@ -196,7 +156,7 @@ class _BottomNavBar extends State<BottomNavBar> {
               'Keluar',
               style: GoogleFonts.poppins(
                 fontSize: 14,
-                fontWeight: FontWeight.normal,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),
