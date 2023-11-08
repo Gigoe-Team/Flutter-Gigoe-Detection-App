@@ -71,7 +71,8 @@ class _AddPatientState extends State<AddPatient> {
     return Scaffold(
       backgroundColor: AppColors.softWhite,
       appBar: AppBar(
-        backgroundColor: AppColors.softWhite,
+        automaticallyImplyLeading: false,
+        forceMaterialTransparency: true,
         elevation: 0,
         toolbarHeight: 80,
         title: Text(
