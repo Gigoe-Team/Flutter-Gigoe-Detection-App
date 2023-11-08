@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../widgets/custom_button.dart';
+import 'package:gigoe_detection_app/features/presentation/widgets/custom_button.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -24,7 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: const Color(0xffA0BEE0),
+      backgroundColor: AppColors.softBlue,
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -41,9 +41,9 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             Container(
               width: double.maxFinite,
-              height: MediaQuery.of(context).size.height * 0.58,
+              height: MediaQuery.of(context).size.height * 0.60,
               decoration: const ShapeDecoration(
-                color: Color(0xFF4E73AF),
+                color: AppColors.primaryBlue,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
@@ -244,7 +244,7 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Kesalahan',
+                'Kesalahan!',
                 style: GoogleFonts.poppins(
                     color: const Color.fromARGB(255, 0, 0, 0),
                     fontSize: 18,
@@ -262,10 +262,10 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pop(context); // Close the dialog
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xff0DAABC)),
+                    backgroundColor: AppColors.primaryBlue),
                 child: Text(
                   'OK',
                   style: GoogleFonts.poppins(
