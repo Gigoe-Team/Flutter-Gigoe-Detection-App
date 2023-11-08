@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../Firebase/fetch_data_pasien.dart';
@@ -16,13 +17,13 @@ class _HistoryPageState extends State<HistoryPage> {
     return Scaffold(
       backgroundColor: const Color(0xFFF3F9FB),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.softWhite,
         elevation: 0,
         toolbarHeight: 80,
         title: Text(
           "Daftar Riwayat Pasien",
           style: GoogleFonts.poppins(
-              color: const Color(0xFF4E73AF),
+              color: AppColors.primaryBlue,
               fontSize: 18,
               fontWeight: FontWeight.w500),
         ),
@@ -33,14 +34,6 @@ class _HistoryPageState extends State<HistoryPage> {
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30),
             ),
-            // gradient: LinearGradient(
-            //   colors: [
-            //     Color(0xff2E4F4F),
-            //     Color(0xff0E8388),
-            //   ],
-            //   begin: Alignment.topCenter,
-            //   end: Alignment.bottomCenter,
-            // ),
           ),
         ),
       ),
