@@ -18,6 +18,8 @@ class _GuidePageState extends State<GuidePage> {
     return Scaffold(
       backgroundColor: AppColors.softWhite,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        forceMaterialTransparency: true,
         backgroundColor: AppColors.softWhite,
         elevation: 0,
         toolbarHeight: 80,
