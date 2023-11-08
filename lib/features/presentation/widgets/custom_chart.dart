@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomChart extends StatefulWidget {
@@ -145,13 +146,13 @@ class _CustomChartState extends State<CustomChart> {
     double width = 24,
     List<int> showTooltips = const [],
   }) {
-    barColor ??= const Color(0XFF016A70);
+    barColor ??= AppColors.primaryBlue;
     return BarChartGroupData(
       x: x,
       barRods: [
         BarChartRodData(
           toY: isTouched ? y + 1 : y,
-          color: isTouched ? Colors.purple : barColor,
+          color: isTouched ? AppColors.darkBlue : barColor,
           width: width,
           borderSide: isTouched
               ? const BorderSide(color: Colors.white, width: 2)
@@ -159,7 +160,7 @@ class _CustomChartState extends State<CustomChart> {
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
             toY: 30,
-            color: const Color(0XFF9BE8D8),
+            color: AppColors.softBlue,
           ),
         ),
       ],
