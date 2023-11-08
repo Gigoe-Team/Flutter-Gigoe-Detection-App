@@ -17,7 +17,8 @@ class _HistoryPageState extends State<HistoryPage> {
     return Scaffold(
       backgroundColor: const Color(0xFFF3F9FB),
       appBar: AppBar(
-        backgroundColor: AppColors.softWhite,
+        automaticallyImplyLeading: false,
+        forceMaterialTransparency: true,
         elevation: 0,
         toolbarHeight: 80,
         title: Text(
