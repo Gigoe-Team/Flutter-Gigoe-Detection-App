@@ -56,6 +56,7 @@ flutter:
     - assets/icons/icon_profile.png
     - assets/images/appbar_logo.png
     - assets/images/logo.png
+    - assets/images/logo2.png
     - assets/images/slider1.png
     - assets/images/slider2.png
     - assets/images/diagram.png
