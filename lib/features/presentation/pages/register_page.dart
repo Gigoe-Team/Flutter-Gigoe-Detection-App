@@ -25,6 +25,16 @@ class _RegisterPageState extends State<RegisterPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.softBlue,
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -158,7 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: CustomButton(
                       btnText: "Buat Akun",
                       backgroundColor: Colors.white,
-                      textColor: const Color(0xff4E73AF),
+                      textColor: AppColors.primaryBlue,
                       minimumSize: const Size(230, 58),
                       onPressed: () => onSubmit(),
                     ),
