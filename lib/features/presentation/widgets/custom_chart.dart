@@ -155,8 +155,8 @@ class _CustomChartState extends State<CustomChart> {
           color: isTouched ? AppColors.darkBlue : barColor,
           width: width,
           borderSide: isTouched
-              ? const BorderSide(color: Colors.white, width: 2)
-              : const BorderSide(color: Colors.white, width: 2),
+              ? const BorderSide(color: Colors.black, width: 2)
+              : const BorderSide(color: Colors.black, width: 2),
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
             toY: 30,
