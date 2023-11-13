@@ -14,8 +14,10 @@ class HistoryPage extends StatefulWidget {
 class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF3F9FB),
+      backgroundColor: AppColors.softWhite,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         forceMaterialTransparency: true,
@@ -38,10 +40,13 @@ class _HistoryPageState extends State<HistoryPage> {
           ),
         ),
       ),
-      body: const Center(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-          child: FetchDataResults(),
+      body: SizedBox(
+        height: screenHeight,
+        child: const Center(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(0, 20, 0, 80),
+            child: FetchDataResults(),
+          ),
         ),
       ),
     );
