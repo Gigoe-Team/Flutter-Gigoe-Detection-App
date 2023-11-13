@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -63,7 +64,7 @@ class _AddPhotoState extends State<AddPhoto> {
     final String name = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
-      backgroundColor: const Color(0xffCBE4DE),
+      backgroundColor: AppColors.softWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -71,7 +72,7 @@ class _AddPhotoState extends State<AddPhoto> {
         title: Text(
           "Tambah Foto",
           style: GoogleFonts.poppins(
-              color: const Color(0xffffffff),
+              color: AppColors.primaryBlue,
               fontSize: 18,
               fontWeight: FontWeight.w500),
         ),
@@ -81,14 +82,6 @@ class _AddPhotoState extends State<AddPhoto> {
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30),
-            ),
-            gradient: LinearGradient(
-              colors: [
-                Color(0xff2E4F4F),
-                Color(0xff0E8388),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
             ),
           ),
         ),
