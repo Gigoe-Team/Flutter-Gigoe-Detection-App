@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Text(
-                            'Drg. Muhammad Fulan',
+                            'drg. Muhammad Fulan',
                             style: GoogleFonts.poppins(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -86,7 +86,15 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                      const CircleAvatar(radius: 30)
+                      const CircleAvatar(
+                        backgroundColor: AppColors.softWhite,
+                        radius: 30,
+                        child: Icon(
+                          Icons.person_3,
+                          size: 40,
+                          color: AppColors.primaryBlue,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -125,12 +133,12 @@ class _HomePageState extends State<HomePage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Data Statistik",
+                    "Peta Sebaran",
                     style: GoogleFonts.poppins(
                         fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Visualisasi data pengalaman karies dalam\nbentuk grafik berdasarkan wilayah dan\njumlah total gigi dmf dari semua pasien.",
+                    "Visualisasi data prevalensi karies dalam\nbentuk grafik berdasarkan wilayah dan\njumlah total gigi DMF dari semua pasien.",
                     style: GoogleFonts.poppins(
                         fontSize: 13, fontWeight: FontWeight.normal),
                   ),
@@ -160,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                         fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    "X = kode alamat berdasarkan kecamatan\nY = jumlah total gigi dmf dari semua pasien per kecamatan.",
+                    "X = kode alamat berdasarkan kecamatan\nY = jumlah total gigi DMF dari semua pasien per kecamatan.",
                     style: GoogleFonts.poppins(
                         fontSize: 13, fontWeight: FontWeight.normal),
                   ),
