@@ -2,6 +2,7 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -20,9 +21,151 @@ class _AddPatientState extends State<AddPatient> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nomorController = TextEditingController();
 
-  String _selectedGender = 'Laki-laki';
-  String _selectedDistrict = 'Baiturrahman';
-  String _selectedProfession = 'Belum/Tidak Bekerja';
+  String _selectedGender = '';
+  String _selectedDistrict = '';
+  String _selectedVillage = '';
+  String _selectedProfession = '';
+
+  List<String> listDistrict = [
+    'Baiturrahman',
+    'Banda Raya',
+    'Jaya Baru',
+    'Kuta Alam',
+    'Kuta Raja',
+    'Lueng Bata',
+    'Meuraxa',
+    'Syiah Kuala',
+    'Ulee Kareng'
+  ];
+
+  Map<String, List<String>> mapVillage = {
+    'Baiturrahman': [
+      'Ateuk Jawo',
+      'Ateuk Deah Tanoh',
+      'Ateuk Pahlawan',
+      'Ateuk Munjeng',
+      'Neusu Aceh',
+      'Seutui',
+      'Sukaramai',
+      'Neusu Jaya',
+      'Peuniti',
+      'Kampung Baru'
+    ],
+    'Banda Raya': [
+      'Lam Ara',
+      'Lampeuot',
+      'Mibo',
+      'Lhong Cut',
+      'Lhong Raya',
+      'Peunyerat',
+      'Lamlagang',
+      'Geuceu Komplek',
+      'Geuceu Inem',
+      'Geuceu Kayee Jato'
+    ],
+    'Jaya Baru': [
+      'Ulee Pata',
+      'Lamjamee',
+      'Lampoh Daya',
+      'Emperom',
+      'Geuceu Menara',
+      'Lamteumen Barat',
+      'Lamteumen Timur',
+      'Bitai',
+      'Punge Blang Cut'
+    ],
+    'Kuta Alam': [
+      'Peunayong',
+      'Laksana',
+      'Keuramat',
+      'Kuta Alam',
+      'Beurawe',
+      'Kota Baru',
+      'Bandar Baru',
+      'Mulia',
+      'Lampulo',
+      'Lamdingin',
+      'Lambaro Skep'
+    ],
+    'Kuta Raja': [
+      'Lampaseh Kota',
+      'Merduati',
+      'Keudah',
+      'Peulanggahan',
+      'Gampong Jawa',
+      'Gampong Pande'
+    ],
+    'Lueng Bata': [
+      'Lamdom',
+      'Cot Masjid',
+      'Bathoh',
+      'Lueng Bata',
+      'Blang Cut',
+      'Lampaloh',
+      'Suka Damai',
+      'Panteriek',
+      'Lamseupeung'
+    ],
+    'Meuraxa': [
+      'Surien',
+      'Aso Nanggroe',
+      'Gampong Blang',
+      'Lamjabat',
+      'Gampong Baro',
+      'Punge Jurong',
+      'Lampaseh Aceh',
+      'Punge Ujong',
+      'Cot Lamkeuweuh',
+      'Gampong Pie',
+      'Ulee Lheue',
+      'Deah Glumpang',
+      'Lambung',
+      'Blang Oi',
+      'Alue Deah Teungoh',
+      'Deah Baro'
+    ],
+    'Syiah Kuala': [
+      'Ie Masen Kaye Adang',
+      'Gampong Pineung',
+      'Lamgugob',
+      'Kopelma Darussalam',
+      'Rukoh',
+      'Jeulingke',
+      'Tibang',
+      'Deah Jaya',
+      'Alue Naga',
+      'Peurada'
+    ],
+    'Ulee Kareng': [
+      'Pango Raya',
+      'Pango Deah',
+      'Ilie',
+      'Lamteh',
+      'Lamglumpang',
+      'Ceurih',
+      'Ie Masen Ulee Kareng',
+      'Doi',
+      'Lambhuk'
+    ],
+  };
+
+  List<String> listGender = [
+    'Laki-laki',
+    'Perempuan',
+  ];
+
+  List<String> listProfession = [
+    'Belum/Tidak Bekerja',
+    'Mengurus Rumah Tangga',
+    'Pelajar/Mahasiswa',
+    'Pegawai Negeri Sipil',
+    'Wiraswasta',
+    'Petani/Pekebun',
+    'Pensiunan',
+    'Buruh',
+    'Tukang',
+    'Lainnya',
+  ];
 
   late DatabaseReference dbRef;
 
@@ -39,9 +182,10 @@ class _AddPatientState extends State<AddPatient> {
       'nik': _nikController.text.trim(),
       'nama': _namaController.text.trim(),
       'ttl': _lahirController.text.trim(),
-      'alamat': _selectedDistrict,
-      'gender': _selectedGender,
-      'pekerjaan': _selectedProfession,
+      'gender': _selectedGender.trim(),
+      'kecamatan': _selectedDistrict.trim(),
+      'desa': _selectedVillage.trim(),
+      'pekerjaan': _selectedProfession.trim(),
       'email': _emailController.text.trim(),
       'nomor': _nomorController.text.trim(),
     };
@@ -68,6 +212,8 @@ class _AddPatientState extends State<AddPatient> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: AppColors.softWhite,
       appBar: AppBar(
@@ -92,104 +238,78 @@ class _AddPatientState extends State<AddPatient> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              _buildNikField("NIK", _nikController),
-              const SizedBox(height: 15),
-              _buildInputField(
-                  "Nama Pasien", TextInputType.text, _namaController),
-              _buildDateField("Tanggal Lahir", _lahirController),
-              _buildDistrictDropdown("Alamat (Kecamatan)"),
-              _buildGenderDropdown("Jenis Kelamin"),
-              _buildProfessionDropdown("Pekerjaan"),
-              _buildInputField(
-                  "Email", TextInputType.emailAddress, _emailController),
-              _buildInputField(
-                  "Nomor Handphone", TextInputType.number, _nomorController),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _buildCancelButton(
-                      // Tombol Batal menghapus seluruh data yang telah diisi
-                      "Batal",
-                      const Color(0xffD90000),
-                      130,
-                      50, () {
-                    _resetControllers();
-                  }),
-                  MaterialButton(
-                    onPressed: () {
-                      _tambahpasien();
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        '/add_photo',
-                        (route) => false,
-                        arguments: _namaController.text.trim(),
-                      );
-                    },
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    color: const Color(0xff2E4F4F),
-                    textColor: Colors.white,
-                    minWidth: 130,
-                    height: 50,
-                    child: Text(
-                      'Lanjutkan',
-                      style: GoogleFonts.poppins(fontSize: 14),
+      body: SizedBox(
+        height: screenHeight,
+        child: ListView(
+          children: [
+            Center(
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildNikField("NIK", _nikController),
+                    const SizedBox(height: 10),
+                    _buildNameField("Nama Lengkap", _namaController),
+                    const SizedBox(height: 10),
+                    _buildDateField("Tanggal Lahir", _lahirController),
+                    _buildGenderDropdown("Jenis Kelamin"),
+                    _buildDistrictDropdown("Kecamatan"),
+                    _buildVillageDropdown("Desa"),
+                    _buildProfessionDropdown("Pekerjaan"),
+                    _buildInputField(
+                      "Alamat Email",
+                      TextInputType.emailAddress,
+                      _emailController,
                     ),
-                  ),
-                ],
+                    _buildInputField(
+                      "Nomor Handphone",
+                      TextInputType.number,
+                      _nomorController,
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _buildCancelButton(
+                            // Tombol Batal menghapus seluruh data yang telah diisi
+                            "Batal",
+                            AppColors.softWhite,
+                            130,
+                            50, () {
+                          _resetControllers();
+                        }),
+                        MaterialButton(
+                          onPressed: () {
+                            _tambahpasien();
+                            Navigator.pushNamedAndRemoveUntil(
+                              context,
+                              '/add_photo',
+                              (route) => false,
+                              arguments: _namaController.text.trim(),
+                            );
+                          },
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          color: AppColors.primaryBlue,
+                          textColor: Colors.white,
+                          minWidth: 130,
+                          height: 50,
+                          child: Text(
+                            'Lanjutkan',
+                            style: GoogleFonts.poppins(fontSize: 14),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 80),
+                  ],
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildInputField(String hintText, TextInputType inputType,
-      TextEditingController controller) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            hintText,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
-          SizedBox(
-            height: 50,
-            child: TextFormField(
-              controller: controller,
-              keyboardType: inputType,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.all(10),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(width: 2, color: Colors.black),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    width: 2,
-                    color: Color(0xff0E8388),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -198,8 +318,18 @@ class _AddPatientState extends State<AddPatient> {
     return TextFormField(
       controller: _nikController,
       keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+        LengthLimitingTextInputFormatter(16)
+      ],
       decoration: InputDecoration(
-        hintText: "Masukan NIK",
+        hintText: "Nomor Induk Kependudukan (NIK)",
+        hintStyle: GoogleFonts.poppins(
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.normal,
+          fontSize: 14,
+          color: Colors.grey,
+        ),
         filled: true,
         fillColor: Colors.white,
         contentPadding: const EdgeInsets.all(10),
@@ -214,16 +344,15 @@ class _AddPatientState extends State<AddPatient> {
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
             width: 2,
-            color: Color(0xff0E8388),
+            color: AppColors.primaryBlue,
           ),
         ),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'NIK tidak boleh kosong';
-        }
-        if (value.length != 16) {
-          return 'NIK harus terdiri dari 16 karakter';
+          return 'Nomor Induk Kependudukan (NIK) harus diisi';
+        } else if (value.length != 16) {
+          return 'Nomor Induk Kependudukan (NIK) harus memiliki 16 digit';
         }
         return null;
       },
@@ -231,30 +360,105 @@ class _AddPatientState extends State<AddPatient> {
     );
   }
 
-  Widget _buildDateField(String hintText, TextEditingController controller) {
+  Widget _buildNameField(String hintText, TextEditingController controller) {
+    return TextFormField(
+      controller: _namaController,
+      textCapitalization: TextCapitalization.words,
+      keyboardType: TextInputType.name,
+      decoration: InputDecoration(
+        hintText: 'Nama Lengkap',
+        hintStyle: GoogleFonts.poppins(
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.normal,
+          fontSize: 14,
+          color: Colors.grey,
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.all(10),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            width: 2,
+            color: Colors.black,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            width: 2,
+            color: AppColors.primaryBlue,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInputField(String hintText, TextInputType inputType,
+      TextEditingController controller) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            hintText,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
+          SizedBox(
+            height: 50,
+            child: TextFormField(
+              controller: controller,
+              keyboardType: inputType,
+              decoration: InputDecoration(
+                hintText: hintText,
+                hintStyle: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: FontWeight.normal,
+                  color: Colors.grey,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.all(10),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(width: 2, color: Colors.black),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    width: 2,
+                    color: AppColors.primaryBlue,
+                  ),
+                ),
+              ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDateField(String hintText, TextEditingController controller) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           DateTimePicker(
             type: DateTimePickerType.date,
             controller: _lahirController,
             decoration: InputDecoration(
+              hintText: "Tanggal Lahir",
+              hintStyle: GoogleFonts.poppins(
+                fontStyle: FontStyle.normal,
+                fontWeight: FontWeight.normal,
+                fontSize: 14,
+                color: Colors.grey,
+              ),
               filled: true,
               fillColor: Colors.white,
               contentPadding: const EdgeInsets.all(10),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(
-                  width: 2,
+                  width: 1,
                   color: Colors.black,
                 ),
               ),
@@ -262,12 +466,12 @@ class _AddPatientState extends State<AddPatient> {
                 borderRadius: BorderRadius.circular(10),
                 borderSide: const BorderSide(
                   width: 2,
-                  color: Color(0xff0E8388),
+                  color: AppColors.primaryBlue,
                 ),
               ),
               suffixIcon: const Icon(
                 Icons.calendar_today,
-                color: Color(0xff0E8388),
+                color: AppColors.primaryBlue,
               ),
             ),
             dateMask: 'dd/MM/yyyy',
@@ -288,45 +492,40 @@ class _AddPatientState extends State<AddPatient> {
     );
   }
 
-  Widget _buildDistrictDropdown(String hintText) {
+  Widget _buildGenderDropdown(String hintText) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            hintText,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
           SizedBox(
             height: 50,
             child: DropdownButtonFormField<String>(
-              value: _selectedDistrict,
-              items: <String>[
-                'Baiturrahman',
-                'Kuta Alam',
-                'Meuraxa',
-                'Syiah Kuala',
-                'Lueng Bata',
-                'Kuta Raja',
-                'Banda Raya',
-                'Jaya Baru',
-                'Ulee Kareng',
-              ].map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+              value: _selectedGender.isNotEmpty ? _selectedGender : null,
               onChanged: (String? newValue) {
                 setState(() {
-                  _selectedDistrict = newValue!;
+                  _selectedGender = newValue!;
                 });
               },
+              items: listGender.map((String gender) {
+                return DropdownMenuItem<String>(
+                  value: gender,
+                  child: Text(
+                    gender,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                );
+              }).toList(),
               decoration: InputDecoration(
+                hintText: "Jenis Kelamin",
+                hintStyle: GoogleFonts.poppins(
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
                 filled: true,
                 fillColor: Colors.white,
                 contentPadding: const EdgeInsets.all(10),
@@ -341,7 +540,7 @@ class _AddPatientState extends State<AddPatient> {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(
                     width: 2,
-                    color: Color(0xff0E8388),
+                    color: AppColors.primaryBlue,
                   ),
                 ),
               ),
@@ -352,35 +551,110 @@ class _AddPatientState extends State<AddPatient> {
     );
   }
 
-  Widget _buildGenderDropdown(String hintText) {
+  // Widget _buildDistrictDropdown(String hintText) {
+  //   return Container(
+  //     margin: const EdgeInsets.only(bottom: 10),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         SizedBox(
+  //           height: 50,
+  //           child: DropdownButtonFormField<String>(
+  //             value: _selectedDistrict.isNotEmpty ? _selectedDistrict : null,
+  //             items: <String>[
+  //               'Baiturrahman',
+  //               'Kuta Alam',
+  //               'Meuraxa',
+  //               'Syiah Kuala',
+  //               'Lueng Bata',
+  //               'Kuta Raja',
+  //               'Banda Raya',
+  //               'Jaya Baru',
+  //               'Ulee Kareng',
+  //             ].map((String value) {
+  //               return DropdownMenuItem<String>(
+  //                 value: value,
+  //                 child: Text(
+  //                   value,
+  //                   style: const TextStyle(
+  //                     fontWeight: FontWeight.normal,
+  //                   ),
+  //                 ),
+  //               );
+  //             }).toList(),
+  //             onChanged: (String? newValue) {
+  //               setState(() {
+  //                 _selectedDistrict = newValue!;
+  //               });
+  //             },
+  //             decoration: InputDecoration(
+  //               hintText: "Kecamatan",
+  //               hintStyle: GoogleFonts.poppins(
+  //                 fontStyle: FontStyle.normal,
+  //                 fontWeight: FontWeight.normal,
+  //                 fontSize: 14,
+  //                 color: Colors.grey,
+  //               ),
+  //               filled: true,
+  //               fillColor: Colors.white,
+  //               contentPadding: const EdgeInsets.all(10),
+  //               border: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(10),
+  //                 borderSide: const BorderSide(
+  //                   width: 2,
+  //                   color: Colors.black,
+  //                 ),
+  //               ),
+  //               focusedBorder: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(10),
+  //                 borderSide: const BorderSide(
+  //                   width: 2,
+  //                   color: AppColors.primaryBlue,
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
+  Widget _buildDistrictDropdown(String hintText) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            hintText,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
           SizedBox(
             height: 50,
             child: DropdownButtonFormField<String>(
-              value: _selectedGender,
-              items: <String>['Laki-laki', 'Perempuan'].map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
+              value: _selectedDistrict.isNotEmpty ? _selectedDistrict : null,
+              onChanged: (newValue) {
                 setState(() {
-                  _selectedGender = newValue!;
+                  _selectedDistrict = newValue!;
+                  _selectedVillage = '';
                 });
               },
+              items: listDistrict.map((String district) {
+                return DropdownMenuItem<String>(
+                  value: district,
+                  child: Text(
+                    district,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                );
+              }).toList(),
               decoration: InputDecoration(
+                hintText: "Kecamatan",
+                hintStyle: GoogleFonts.poppins(
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
                 filled: true,
                 fillColor: Colors.white,
                 contentPadding: const EdgeInsets.all(10),
@@ -395,7 +669,138 @@ class _AddPatientState extends State<AddPatient> {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(
                     width: 2,
-                    color: Color(0xff0E8388),
+                    color: AppColors.primaryBlue,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Widget _buildVillageDropdown(String hintText) {
+  //   return Container(
+  //     margin: const EdgeInsets.only(bottom: 10),
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         SizedBox(
+  //           height: 50,
+  //           child: DropdownButtonFormField<String>(
+  //             value: _selectedVillage,
+  //             items: <String>[
+  //               'Ateuk Jawo',
+  //               'Ateuk Deah Tanoh',
+  //               'Ateuk Pahlawan',
+  //               'Ateuk Munjeng',
+  //               'Neusu Aceh',
+  //               'Seutui',
+  //               'Sukaramai',
+  //               'Neusu Jaya',
+  //               'Peuniti',
+  //               'Kampung Baru',
+  //             ].map((String value) {
+  //               return DropdownMenuItem<String>(
+  //                 value: value,
+  //                 child: Text(
+  //                   value,
+  //                   style: const TextStyle(
+  //                     fontWeight: FontWeight.normal,
+  //                   ),
+  //                 ),
+  //               );
+  //             }).toList(),
+  //             onChanged: (String? newValue) {
+  //               setState(() {
+  //                 _selectedVillage = newValue!;
+  //               });
+  //             },
+  //             decoration: InputDecoration(
+  //               hintText: "Kelurahan/Desa",
+  //               hintStyle: GoogleFonts.poppins(
+  //                 fontStyle: FontStyle.normal,
+  //                 fontWeight: FontWeight.normal,
+  //                 fontSize: 14,
+  //                 color: Colors.grey,
+  //               ),
+  //               filled: true,
+  //               fillColor: Colors.white,
+  //               contentPadding: const EdgeInsets.all(10),
+  //               border: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(10),
+  //                 borderSide: const BorderSide(
+  //                   width: 2,
+  //                   color: Colors.black,
+  //                 ),
+  //               ),
+  //               focusedBorder: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(10),
+  //                 borderSide: const BorderSide(
+  //                   width: 2,
+  //                   color: AppColors.primaryBlue,
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+  Widget _buildVillageDropdown(String hintText) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 50,
+            child: DropdownButtonFormField<String>(
+              value: _selectedVillage.isNotEmpty ? _selectedVillage : null,
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedVillage = newValue!;
+                });
+              },
+              items: _selectedDistrict.isNotEmpty
+                  ? mapVillage[_selectedDistrict]?.map((String village) {
+                        return DropdownMenuItem<String>(
+                          value: village,
+                          child: Text(
+                            village,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        );
+                      }).toList() ??
+                      []
+                  : [],
+              decoration: InputDecoration(
+                hintText: "Kelurahan/Desa",
+                hintStyle: GoogleFonts.poppins(
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.all(10),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    width: 2,
+                    color: Colors.black,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    width: 2,
+                    color: AppColors.primaryBlue,
                   ),
                 ),
               ),
@@ -408,44 +813,39 @@ class _AddPatientState extends State<AddPatient> {
 
   Widget _buildProfessionDropdown(String hintText) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
+      margin: const EdgeInsets.only(bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            hintText,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
           SizedBox(
             height: 50,
             child: DropdownButtonFormField<String>(
-              value: _selectedProfession,
-              items: <String>[
-                'Belum/Tidak Bekerja',
-                'Mengurus Rumah Tangga',
-                'Pelajar/Mahasiswa',
-                'Pegawai Negeri Sipil',
-                'Wiraswasta',
-                'Petani/Pekebun',
-                'Pensiunan',
-                'Buruh',
-                'Tukang',
-                'Lainnya',
-              ].map((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+              value:
+                  _selectedProfession.isNotEmpty ? _selectedProfession : null,
               onChanged: (String? newValue) {
                 setState(() {
                   _selectedProfession = newValue!;
                 });
               },
+              items: listProfession.map((String profession) {
+                return DropdownMenuItem<String>(
+                  value: profession,
+                  child: Text(
+                    profession,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                );
+              }).toList(),
               decoration: InputDecoration(
+                hintText: "Pekerjaan",
+                hintStyle: GoogleFonts.poppins(
+                  fontStyle: FontStyle.normal,
+                  fontWeight: FontWeight.normal,
+                  fontSize: 14,
+                  color: Colors.grey,
+                ),
                 filled: true,
                 fillColor: Colors.white,
                 contentPadding: const EdgeInsets.all(10),
@@ -460,7 +860,7 @@ class _AddPatientState extends State<AddPatient> {
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(
                     width: 2,
-                    color: Color(0xff0E8388),
+                    color: AppColors.primaryBlue,
                   ),
                 ),
               ),
@@ -488,12 +888,17 @@ class _AddPatientState extends State<AddPatient> {
           backgroundColor: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
+            side: const BorderSide(
+              color: AppColors.primaryBlue, // Warna border
+              width: 1, // Lebar border
+            ),
           ),
         ),
         child: Text(
           text,
           style: GoogleFonts.poppins(
             fontSize: 14,
+            color: AppColors.primaryBlue,
           ),
         ),
       ),
@@ -504,6 +909,8 @@ class _AddPatientState extends State<AddPatient> {
   void _resetControllers() {
     _nikController.clear();
     _namaController.clear();
+    _lahirController.clear();
+
     _lahirController.clear();
     _emailController.clear();
     _nomorController.clear();
