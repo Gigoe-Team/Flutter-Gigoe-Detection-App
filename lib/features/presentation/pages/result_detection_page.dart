@@ -3,12 +3,12 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../domain/entities/prediction.dart';
-import '../bloc/classification_bloc.dart';
-import '../bloc/img_response_bloc.dart';
-import '../widgets/bottom_nav_bar.dart';
+import 'package:gigoe_detection_app/features/domain/entities/prediction.dart';
+import 'package:gigoe_detection_app/features/presentation/bloc/classification_bloc.dart';
+import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
+import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
 
 class ResultDetectionPage extends StatefulWidget {
   const ResultDetectionPage({super.key, required this.name});
@@ -112,15 +112,16 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
         lowerFilling.length;
 
     return Scaffold(
-      backgroundColor: const Color(0xffCBE4DE),
+      backgroundColor: AppColors.softWhite,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        forceMaterialTransparency: true,
         elevation: 0,
         toolbarHeight: 80,
         title: Text(
           "Hasil Deteksi",
           style: GoogleFonts.poppins(
-              color: const Color(0xffffffff),
+              color: AppColors.primaryBlue,
               fontSize: 18,
               fontWeight: FontWeight.w500),
         ),
@@ -130,14 +131,6 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30),
-            ),
-            gradient: LinearGradient(
-              colors: [
-                Color(0xff2E4F4F),
-                Color(0xff0E8388),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
             ),
           ),
         ),
@@ -252,8 +245,8 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 elevation: 0,
-                foregroundColor: const Color(0xffffffff),
-                backgroundColor: const Color(0xff0E8388),
+                foregroundColor: AppColors.softWhite,
+                backgroundColor: AppColors.primaryBlue,
                 minimumSize: const Size(0, 50),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -276,7 +269,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                 child: Text(
                   "Kembali & Simpan",
                   style: GoogleFonts.poppins(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
