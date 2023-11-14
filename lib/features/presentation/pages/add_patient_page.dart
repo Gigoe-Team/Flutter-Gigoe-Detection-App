@@ -257,16 +257,9 @@ class _AddPatientState extends State<AddPatient> {
                     _buildDistrictDropdown("Kecamatan"),
                     _buildVillageDropdown("Desa"),
                     _buildProfessionDropdown("Pekerjaan"),
-                    _buildInputField(
-                      "Alamat Email",
-                      TextInputType.emailAddress,
-                      _emailController,
-                    ),
-                    _buildInputField(
-                      "Nomor Handphone",
-                      TextInputType.number,
-                      _nomorController,
-                    ),
+                    _buildEmailField("Alamat Email", _emailController),
+                    const SizedBox(height: 10),
+                    _buildPhoneField("Nomor Handphone", _nomorController),
                     const SizedBox(height: 16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -394,47 +387,6 @@ class _AddPatientState extends State<AddPatient> {
     );
   }
 
-  Widget _buildInputField(String hintText, TextInputType inputType,
-      TextEditingController controller) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: 50,
-            child: TextFormField(
-              controller: controller,
-              keyboardType: inputType,
-              decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: GoogleFonts.poppins(
-                  fontSize: 14,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.grey,
-                ),
-                filled: true,
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.all(10),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(width: 2, color: Colors.black),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    width: 2,
-                    color: AppColors.primaryBlue,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   Widget _buildDateField(String hintText, TextEditingController controller) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
@@ -551,75 +503,6 @@ class _AddPatientState extends State<AddPatient> {
     );
   }
 
-  // Widget _buildDistrictDropdown(String hintText) {
-  //   return Container(
-  //     margin: const EdgeInsets.only(bottom: 10),
-  //     child: Column(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: [
-  //         SizedBox(
-  //           height: 50,
-  //           child: DropdownButtonFormField<String>(
-  //             value: _selectedDistrict.isNotEmpty ? _selectedDistrict : null,
-  //             items: <String>[
-  //               'Baiturrahman',
-  //               'Kuta Alam',
-  //               'Meuraxa',
-  //               'Syiah Kuala',
-  //               'Lueng Bata',
-  //               'Kuta Raja',
-  //               'Banda Raya',
-  //               'Jaya Baru',
-  //               'Ulee Kareng',
-  //             ].map((String value) {
-  //               return DropdownMenuItem<String>(
-  //                 value: value,
-  //                 child: Text(
-  //                   value,
-  //                   style: const TextStyle(
-  //                     fontWeight: FontWeight.normal,
-  //                   ),
-  //                 ),
-  //               );
-  //             }).toList(),
-  //             onChanged: (String? newValue) {
-  //               setState(() {
-  //                 _selectedDistrict = newValue!;
-  //               });
-  //             },
-  //             decoration: InputDecoration(
-  //               hintText: "Kecamatan",
-  //               hintStyle: GoogleFonts.poppins(
-  //                 fontStyle: FontStyle.normal,
-  //                 fontWeight: FontWeight.normal,
-  //                 fontSize: 14,
-  //                 color: Colors.grey,
-  //               ),
-  //               filled: true,
-  //               fillColor: Colors.white,
-  //               contentPadding: const EdgeInsets.all(10),
-  //               border: OutlineInputBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //                 borderSide: const BorderSide(
-  //                   width: 2,
-  //                   color: Colors.black,
-  //                 ),
-  //               ),
-  //               focusedBorder: OutlineInputBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //                 borderSide: const BorderSide(
-  //                   width: 2,
-  //                   color: AppColors.primaryBlue,
-  //                 ),
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
   Widget _buildDistrictDropdown(String hintText) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
@@ -680,75 +563,6 @@ class _AddPatientState extends State<AddPatient> {
     );
   }
 
-  // Widget _buildVillageDropdown(String hintText) {
-  //   return Container(
-  //     margin: const EdgeInsets.only(bottom: 10),
-  //     child: Column(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: [
-  //         SizedBox(
-  //           height: 50,
-  //           child: DropdownButtonFormField<String>(
-  //             value: _selectedVillage,
-  //             items: <String>[
-  //               'Ateuk Jawo',
-  //               'Ateuk Deah Tanoh',
-  //               'Ateuk Pahlawan',
-  //               'Ateuk Munjeng',
-  //               'Neusu Aceh',
-  //               'Seutui',
-  //               'Sukaramai',
-  //               'Neusu Jaya',
-  //               'Peuniti',
-  //               'Kampung Baru',
-  //             ].map((String value) {
-  //               return DropdownMenuItem<String>(
-  //                 value: value,
-  //                 child: Text(
-  //                   value,
-  //                   style: const TextStyle(
-  //                     fontWeight: FontWeight.normal,
-  //                   ),
-  //                 ),
-  //               );
-  //             }).toList(),
-  //             onChanged: (String? newValue) {
-  //               setState(() {
-  //                 _selectedVillage = newValue!;
-  //               });
-  //             },
-  //             decoration: InputDecoration(
-  //               hintText: "Kelurahan/Desa",
-  //               hintStyle: GoogleFonts.poppins(
-  //                 fontStyle: FontStyle.normal,
-  //                 fontWeight: FontWeight.normal,
-  //                 fontSize: 14,
-  //                 color: Colors.grey,
-  //               ),
-  //               filled: true,
-  //               fillColor: Colors.white,
-  //               contentPadding: const EdgeInsets.all(10),
-  //               border: OutlineInputBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //                 borderSide: const BorderSide(
-  //                   width: 2,
-  //                   color: Colors.black,
-  //                 ),
-  //               ),
-  //               focusedBorder: OutlineInputBorder(
-  //                 borderRadius: BorderRadius.circular(10),
-  //                 borderSide: const BorderSide(
-  //                   width: 2,
-  //                   color: AppColors.primaryBlue,
-  //                 ),
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
   Widget _buildVillageDropdown(String hintText) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
@@ -871,6 +685,76 @@ class _AddPatientState extends State<AddPatient> {
     );
   }
 
+  Widget _buildEmailField(String hintText, TextEditingController controller) {
+    return TextFormField(
+      controller: _emailController,
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        hintText: 'Alamat Email',
+        hintStyle: GoogleFonts.poppins(
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.normal,
+          fontSize: 14,
+          color: Colors.grey,
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.all(10),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            width: 2,
+            color: Colors.black,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            width: 2,
+            color: AppColors.primaryBlue,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPhoneField(String hintText, TextEditingController controller) {
+    return TextFormField(
+      controller: _nomorController,
+      keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+        LengthLimitingTextInputFormatter(13)
+      ],
+      decoration: InputDecoration(
+        hintText: 'Nomor Handphone',
+        hintStyle: GoogleFonts.poppins(
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.normal,
+          fontSize: 14,
+          color: Colors.grey,
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.all(10),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            width: 2,
+            color: Colors.black,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            width: 2,
+            color: AppColors.primaryBlue,
+          ),
+        ),
+      ),
+    );
+  }
+
   // Tombol Batal
   Widget _buildCancelButton(
     String text,
@@ -910,7 +794,6 @@ class _AddPatientState extends State<AddPatient> {
     _nikController.clear();
     _namaController.clear();
     _lahirController.clear();
-
     _lahirController.clear();
     _emailController.clear();
     _nomorController.clear();
