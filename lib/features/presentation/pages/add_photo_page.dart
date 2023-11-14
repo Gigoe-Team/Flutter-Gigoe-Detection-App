@@ -5,10 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../bloc/classification_bloc.dart';
-import '../bloc/img_response_bloc.dart';
-import '../widgets/bottom_nav_bar.dart';
+import 'package:gigoe_detection_app/features/presentation/bloc/classification_bloc.dart';
+import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
+import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
 import 'result_detection_page.dart';
 
 class AddPhoto extends StatefulWidget {
@@ -66,7 +65,8 @@ class _AddPhotoState extends State<AddPhoto> {
     return Scaffold(
       backgroundColor: AppColors.softWhite,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        forceMaterialTransparency: true,
         elevation: 0,
         toolbarHeight: 80,
         title: Text(
@@ -77,14 +77,6 @@ class _AddPhotoState extends State<AddPhoto> {
               fontWeight: FontWeight.w500),
         ),
         centerTitle: true,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30),
-            ),
-          ),
-        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
@@ -150,8 +142,8 @@ class _AddPhotoState extends State<AddPhoto> {
                   padding: const EdgeInsets.only(bottom: 40),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: const Color(0xffffffff),
-                      backgroundColor: const Color(0xff0E8388),
+                      foregroundColor: AppColors.softWhite,
+                      backgroundColor: AppColors.primaryBlue,
                       minimumSize: const Size(300, 50),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -193,15 +185,18 @@ class _AddPhotoState extends State<AddPhoto> {
                       builder: (context, state) {
                         if (state is ImgResponseLoading) {
                           return const Center(
-                            child:
-                                CircularProgressIndicator(color: Colors.white),
+                            child: Padding(
+                              padding: EdgeInsets.all(10),
+                              child: CircularProgressIndicator(
+                                  color: AppColors.softWhite),
+                            ),
                           );
                         }
                         return Center(
                           child: Text(
                             "PROSES",
                             style: GoogleFonts.poppins(
-                              fontSize: 16,
+                              fontSize: 14,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -228,7 +223,7 @@ class _AddPhotoState extends State<AddPhoto> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         children: [
@@ -277,7 +272,7 @@ class _AddPhotoState extends State<AddPhoto> {
                   },
                   icon: const Icon(
                     Icons.upload_rounded,
-                    size: 25,
+                    size: 20,
                   ),
                   label: Text(
                     "Upload",
@@ -285,8 +280,11 @@ class _AddPhotoState extends State<AddPhoto> {
                   ),
                   style: ElevatedButton.styleFrom(
                     elevation: 2,
-                    foregroundColor: const Color(0xffffffff),
-                    backgroundColor: const Color(0xff0E8388),
+                    foregroundColor: AppColors.softWhite,
+                    backgroundColor: AppColors.primaryBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
               ),
@@ -298,7 +296,7 @@ class _AddPhotoState extends State<AddPhoto> {
                   },
                   icon: const Icon(
                     Icons.photo_camera_rounded,
-                    size: 25,
+                    size: 20,
                   ),
                   label: Text(
                     "Camera",
@@ -306,13 +304,16 @@ class _AddPhotoState extends State<AddPhoto> {
                   ),
                   style: ElevatedButton.styleFrom(
                     elevation: 2,
-                    foregroundColor: const Color(0xffffffff),
-                    backgroundColor: const Color(0xff2E4F4F),
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.darkBlue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
