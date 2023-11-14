@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/error/failures.dart';
-import '../repositories/firebase_repository.dart';
+import 'package:gigoe_detection_app/core/error/failures.dart';
+import 'package:gigoe_detection_app/features/domain/repositories/firebase_repository.dart';
 
 class GetDataChartFromFirebase {
   final FirebaseRepository repository;
