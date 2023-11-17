@@ -51,7 +51,7 @@ Future<Map<String, double>> getHasil(data) async {
     final dataAlamat = data.getOrElse(() => []);
 
     final filteredDataAlamat =
-        dataAlamat.where((item) => item['alamat'] == alamat[i]).toList();
+        dataAlamat.where((item) => item['kecamatan'] == alamat[i]).toList();
 
     double totalKerusakan = 0;
     for (var j = 0; j < filteredDataAlamat.length; j++) {
