@@ -171,24 +171,24 @@ class _CustomChartState extends State<CustomChart> {
 
 final List<String> titleList = [
   'BN',
-  'BR',
-  'JB',
   'KA',
-  'KR',
-  'LB',
   'MX',
   'SK',
+  'LB',
+  'KR',
+  'BR',
+  'JB',
   'UK',
 ];
 
 final List<String> namePlaceList = [
   'Baiturrahman',
-  'Banda Raya',
-  'Jaya Baru',
   'Kuta Alam',
-  'Kuta Raja',
-  'Lueng Bata',
   'Meuraxa',
   'Syiah Kuala',
+  'Lueng Bata',
+  'Kuta Raja',
+  'Banda Raya',
+  'Jaya Baru',
   'Ulee Kareng',
 ];
