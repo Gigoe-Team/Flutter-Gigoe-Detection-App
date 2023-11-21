@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                         fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    "1. Baiturrahman (BN)\n2. Banda Raya (BR)\n3. Jaya Baru (JB)\n4. Kuta Alam (KA)\n5. Kuta Raja (KR)\n6. Lueng Bata (LB)\n7. Meuraxa (MX)\n8. Syiah Kuala (SK)\n9. Ulee Kareng (UK)",
+                    "1. Baiturrahman (BN)\n2. Kuta Alam (KA)\n3. Meuraxa (MX)\n4. Syiah Kuala (SK)\n5. Lueng Bata (LB)\n6. Kuta Raja (KR)\n7. Banda Raya (BR)\n8. Jaya Baru (JB)\n9. Ulee Kareng (UK)",
                     style: GoogleFonts.poppins(
                         fontSize: 13, fontWeight: FontWeight.normal),
                   ),
