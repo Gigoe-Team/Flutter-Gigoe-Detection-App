@@ -260,7 +260,7 @@ class _AddPatientState extends State<AddPatient> {
                     _buildEmailField("Alamat Email", _emailController),
                     const SizedBox(height: 10),
                     _buildPhoneField("Nomor Handphone", _nomorController),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 30),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
