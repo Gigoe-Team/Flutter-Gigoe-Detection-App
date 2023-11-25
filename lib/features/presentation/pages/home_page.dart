@@ -1,10 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gigoe_detection_app/features/presentation/bloc/data_chart_bloc.dart';
+import 'package:gigoe_detection_app/features/presentation/pages/user_page.dart';
 import 'package:gigoe_detection_app/features/presentation/widgets/custom_chart.dart';
+import 'package:gigoe_detection_app/features/presentation/widgets/user_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gigoe_detection_app/core/utils/app_colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,11 +18,30 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loginUser = UserModel();
+  late String _userName = '';
   @override
   void initState() {
     super.initState();
 
     context.read<DataChartBloc>().add(OnGetDataChartEvent());
+    _fetchUserName();
+    setState(() {});
+  }
+
+  void _fetchUserName() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final userDoc =
+          FirebaseFirestore.instance.collection('users').doc(user.uid);
+      final userData = await userDoc.get();
+      if (userData.exists) {
+        setState(() {
+          _userName = userData.get('name') ?? '';
+        });
+      }
+    }
   }
 
   @override
@@ -31,7 +54,7 @@ class _HomePageState extends State<HomePage> {
     ];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF3F9FB),
+      backgroundColor: AppColors.softWhite,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         forceMaterialTransparency: true,
@@ -62,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                   width: MediaQuery.of(context).size.width / 1.12,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
-                    color: AppColors.softBlue,
+                    color: AppColors.primaryBlue,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,34 +96,37 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             'Halo,',
                             style: GoogleFonts.poppins(
-                              fontSize: 12,
+                              fontSize: 14,
+                              color: AppColors.softWhite,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           Text(
-                            'drg. Muhammad Fulan',
+                            'drg. $_userName',
                             style: GoogleFonts.poppins(
-                              fontSize: 14,
+                              fontSize: 16,
                               fontWeight: FontWeight.w500,
+                              color: AppColors.softWhite,
                             ),
                           ),
                         ],
                       ),
-                      const CircleAvatar(
-                        backgroundColor: AppColors.softWhite,
-                        radius: 30,
-                        child: Icon(
-                          Icons.person_3,
-                          size: 40,
-                          color: AppColors.primaryBlue,
-                        ),
-                      ),
+                      const ProfileAvatarUser(),
+                      // const CircleAvatar(
+                      //   backgroundColor: AppColors.softWhite,
+                      //   radius: 30,
+                      //   child: Icon(
+                      //     Icons.person,
+                      //     size: 40,
+                      //     color: AppColors.primaryBlue,
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 20),
             CarouselSlider(
               items: images.map((imagePath) {
                 return Container(
@@ -128,21 +154,34 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Peta Sebaran",
-                    style: GoogleFonts.poppins(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+              padding: const EdgeInsets.all(20),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Peta Sebaran",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.darkBlue,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "Visualisasi data prevalensi karies dalam bentuk grafik berdasarkan wilayah dan jumlah total gigi DMF dari semua pasien.",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.darkBlue,
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "Visualisasi data prevalensi karies dalam\nbentuk grafik berdasarkan wilayah dan\njumlah total gigi DMF dari semua pasien.",
-                    style: GoogleFonts.poppins(
-                        fontSize: 13, fontWeight: FontWeight.normal),
-                  ),
-                ],
+                ),
               ),
             ),
             Padding(
@@ -156,37 +195,84 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            // const SizedBox(height: 30),
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Keterangan:",
-                    style: GoogleFonts.poppins(
-                        fontSize: 18, fontWeight: FontWeight.w600),
+              padding: const EdgeInsets.fromLTRB(20, 20, 20, 90),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Text(
+                      //   "Keterangan :",
+                      //   style: GoogleFonts.poppins(
+                      //       color: AppColors.darkBlue,
+                      //       fontSize: 18,
+                      //       fontWeight: FontWeight.bold),
+                      // ),
+                      // const SizedBox(height: 10),
+                      Text(
+                        "BN : Baiturrahman\nKA : Kuta Alam\nMX : Meuraxa\nSK : Syiah Kuala\nLB : Lueng Bata\nKR : Kuta Raja\nBR : Banda Raya\nJB : Jaya Baru\nUK : Ulee Kareng",
+                        style: GoogleFonts.poppins(
+                            color: AppColors.darkBlue,
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal),
+                      ),
+                      // Text(
+                      //   "X = kode alamat berdasarkan kecamatan\nY = jumlah total gigi DMF dari semua pasien per kecamatan.",
+                      //   style: GoogleFonts.poppins(
+                      //       fontSize: 13, fontWeight: FontWeight.normal),
+                      // ),
+                      // Text(
+                      //   "Kecamatan di Kota Banda Aceh:",
+                      //   style: GoogleFonts.poppins(
+                      //       fontSize: 16, fontWeight: FontWeight.w600),
+                      // ),
+                      // Text(
+                      //   "BN : Baiturrahman\nKA : Kuta Alam\nMX : Meuraxa\nSK : Syiah Kuala\nLB : Lueng Bata\nKR : Kuta Raja\nBR : Banda Raya\nJB : Jaya Baru\nUK : Ulee Kareng",
+                      //   style: GoogleFonts.poppins(
+                      //       fontSize: 14, fontWeight: FontWeight.normal),
+                      // ),
+                    ],
                   ),
-                  Text(
-                    "X = kode alamat berdasarkan kecamatan\nY = jumlah total gigi DMF dari semua pasien per kecamatan.",
-                    style: GoogleFonts.poppins(
-                        fontSize: 13, fontWeight: FontWeight.normal),
-                  ),
-                  Text(
-                    "Kecamatan di Kota Banda Aceh:",
-                    style: GoogleFonts.poppins(
-                        fontSize: 16, fontWeight: FontWeight.w600),
-                  ),
-                  Text(
-                    "1. Baiturrahman (BN)\n2. Kuta Alam (KA)\n3. Meuraxa (MX)\n4. Syiah Kuala (SK)\n5. Lueng Bata (LB)\n6. Kuta Raja (KR)\n7. Banda Raya (BR)\n8. Jaya Baru (JB)\n9. Ulee Kareng (UK)",
-                    style: GoogleFonts.poppins(
-                        fontSize: 13, fontWeight: FontWeight.normal),
-                  ),
-                ],
+                ),
               ),
             ),
-            const SizedBox(height: 60),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileAvatarUser extends StatelessWidget {
+  const ProfileAvatarUser({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const UserProfilePage(),
+          ),
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.all(5),
+        child: const CircleAvatar(
+          backgroundColor: AppColors.softWhite,
+          radius: 30,
+          child: Icon(
+            Icons.person,
+            size: 40,
+            color: AppColors.primaryBlue,
+          ),
         ),
       ),
     );
