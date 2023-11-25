@@ -46,15 +46,15 @@ class _GuidePageState extends State<GuidePage> {
           CarouselSlider(
             items: [
               _buildPhotoSlide(
-                  "Foto 1 - Gigi Depan", "assets/images/gigi_depan.JPG"),
+                  "Foto 1 - Gigi Labial", "assets/images/gigi_depan.JPG"),
               _buildPhotoSlide(
-                  "Foto 2 - Gigi Kanan", "assets/images/gigi_kanan.JPG"),
+                  "Foto 2 - Gigi Bukal Kanan", "assets/images/gigi_kanan.JPG"),
               _buildPhotoSlide(
-                  "Foto 3 - Gigi Kiri", "assets/images/gigi_kiri.JPG"),
+                  "Foto 3 - Gigi Bukal Kiri", "assets/images/gigi_kiri.JPG"),
               _buildPhotoSlide(
-                  "Foto 4 - Gigi Atas", "assets/images/gigi_atas.JPG"),
+                  "Foto 4 - Gigi Oklusal Atas", "assets/images/gigi_atas.JPG"),
               _buildPhotoSlide(
-                  "Foto 5 - Gigi Bawah", "assets/images/gigi_bawah.JPG")
+                  "Foto 5 - Gigi Oklusal Bawah", "assets/images/gigi_bawah.JPG")
             ],
             options: CarouselOptions(
               height: height * 0.43,
