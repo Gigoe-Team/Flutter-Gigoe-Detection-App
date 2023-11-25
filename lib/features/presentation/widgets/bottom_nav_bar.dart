@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/add_patient_page.dart';
@@ -144,7 +146,10 @@ class _BottomNavBar extends State<BottomNavBar> {
             ),
           ),
           TextButton(
-            onPressed: () => Navigator.of(context).pop(true),
+            // onPressed: () => Navigator.of(context).pop(true),
+            onPressed: () {
+              exit(0);
+            },
             style: TextButton.styleFrom(
               foregroundColor: Colors.red[900],
               textStyle: GoogleFonts.poppins(
