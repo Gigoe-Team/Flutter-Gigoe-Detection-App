@@ -267,7 +267,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
               },
               child: Center(
                 child: Text(
-                  "Kembali & Simpan",
+                  "Simpan",
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
@@ -420,7 +420,7 @@ class ResultDetectionCard extends StatelessWidget {
                 ],
               ),
             ],
-          )
+          ),
         ],
       ),
     );
