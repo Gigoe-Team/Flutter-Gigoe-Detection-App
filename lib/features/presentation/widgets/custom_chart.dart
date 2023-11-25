@@ -128,7 +128,8 @@ class _CustomChartState extends State<CustomChart> {
     final List<double?> values = result.values.toList();
 
     return List.generate(values.length, (i) {
-      final value = values[i] != null ? values[i]!.toStringAsFixed(0) : '0.0';
+      final value = values[i] != null ? values[i]!.toStringAsFixed(0) : '0';
+      // final value = values[i] != null ? values[i]!.toStringAsFixed(0) : '0.0';
 
       return makeGroupData(
         i,
