@@ -6,7 +6,6 @@ import 'package:gigoe_detection_app/features/presentation/bloc/classification_bl
 import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/add_photo_page.dart';
 import 'package:gigoe_detection_app/features/presentation/pages/login_page.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/profile_page.dart';
 import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
 import 'di.dart' as di;
 import 'features/presentation/bloc/data_chart_bloc.dart';
@@ -51,9 +50,8 @@ class MyApp extends StatelessWidget {
           '/': (context) => const SplashPage(),
           '/welcome': (context) => const WelcomePage(),
           '/main': (context) => const MyHomePage(),
-          '/signIn-page': (context) => const LoginPage(),
+          '/login_page': (context) => const LoginPage(),
           '/add_photo': (context) => const AddPhoto(),
-          '/profile-page': (context) => const ProfilePage(),
         },
       ),
     );
