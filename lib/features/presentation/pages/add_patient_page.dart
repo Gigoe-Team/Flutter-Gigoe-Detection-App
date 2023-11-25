@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gigoe_detection_app/core/utils/app_colors.dart';
+import 'package:gigoe_detection_app/features/presentation/widgets/custom_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddPatient extends StatefulWidget {
@@ -213,6 +214,7 @@ class _AddPatientState extends State<AddPatient> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       backgroundColor: AppColors.softWhite,
@@ -260,41 +262,29 @@ class _AddPatientState extends State<AddPatient> {
                     _buildEmailField("Alamat Email", _emailController),
                     const SizedBox(height: 10),
                     _buildPhoneField("Nomor Handphone", _nomorController),
-                    const SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _buildCancelButton(
-                            // Tombol Batal menghapus seluruh data yang telah diisi
-                            "Batal",
-                            AppColors.softWhite,
-                            130,
-                            50, () {
-                          _resetControllers();
-                        }),
-                        MaterialButton(
-                          onPressed: () {
-                            _tambahpasien();
-                            Navigator.pushNamedAndRemoveUntil(
-                              context,
-                              '/add_photo',
-                              (route) => false,
-                              arguments: _namaController.text.trim(),
-                            );
-                          },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          color: AppColors.primaryBlue,
-                          textColor: Colors.white,
-                          minWidth: 130,
-                          height: 50,
-                          child: Text(
-                            'Lanjutkan',
-                            style: GoogleFonts.poppins(fontSize: 14),
-                          ),
-                        ),
-                      ],
+                    const SizedBox(height: 35),
+                    MaterialButton(
+                      onPressed: () {
+                        _tambahpasien();
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/add_photo',
+                          (route) => false,
+                          arguments: _namaController.text.trim(),
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      color: AppColors.primaryBlue,
+                      textColor: Colors.white,
+                      minWidth: screenWidth,
+                      // minWidth: 300,
+                      height: 50,
+                      child: Text(
+                        'Lanjutkan',
+                        style: GoogleFonts.poppins(fontSize: 14),
+                      ),
                     ),
                     const SizedBox(height: 80),
                   ],
@@ -753,49 +743,5 @@ class _AddPatientState extends State<AddPatient> {
         ),
       ),
     );
-  }
-
-  // Tombol Batal
-  Widget _buildCancelButton(
-    String text,
-    Color color,
-    double width,
-    double height,
-    Function()? onPressed,
-  ) {
-    return SizedBox(
-      width: width,
-      height: height,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: const BorderSide(
-              color: AppColors.primaryBlue, // Warna border
-              width: 1, // Lebar border
-            ),
-          ),
-        ),
-        child: Text(
-          text,
-          style: GoogleFonts.poppins(
-            fontSize: 14,
-            color: AppColors.primaryBlue,
-          ),
-        ),
-      ),
-    );
-  }
-
-// Reset data di dalam field
-  void _resetControllers() {
-    _nikController.clear();
-    _namaController.clear();
-    _lahirController.clear();
-    _lahirController.clear();
-    _emailController.clear();
-    _nomorController.clear();
   }
 }
