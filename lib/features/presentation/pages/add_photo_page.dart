@@ -100,7 +100,7 @@ class _AddPhotoState extends State<AddPhoto> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: _buildImageCard(
-                    'Gigi Depan',
+                    'Gigi Labial',
                     'PHOTO 1 OF 5',
                     _imageFiles['Gigi Depan'],
                   ),
@@ -108,7 +108,7 @@ class _AddPhotoState extends State<AddPhoto> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: _buildImageCard(
-                    'Gigi Kanan',
+                    'Gigi Bukal Kanan',
                     'PHOTO 2 OF 5',
                     _imageFiles['Gigi Kanan'],
                   ),
@@ -116,7 +116,7 @@ class _AddPhotoState extends State<AddPhoto> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: _buildImageCard(
-                    'Gigi Kiri',
+                    'Gigi Bukal Kiri',
                     'PHOTO 3 OF 5',
                     _imageFiles['Gigi Kiri'],
                   ),
@@ -124,7 +124,7 @@ class _AddPhotoState extends State<AddPhoto> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: _buildImageCard(
-                    'Gigi Atas',
+                    'Gigi Oklusal Atas',
                     'PHOTO 4 OF 5',
                     _imageFiles['Gigi Atas'],
                   ),
@@ -132,7 +132,7 @@ class _AddPhotoState extends State<AddPhoto> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: _buildImageCard(
-                    'Gigi Bawah',
+                    'Gigi Oklusal Bawah',
                     'PHOTO 5 OF 5',
                     _imageFiles['Gigi Bawah'],
                   ),
@@ -194,9 +194,9 @@ class _AddPhotoState extends State<AddPhoto> {
                         }
                         return Center(
                           child: Text(
-                            "PROSES",
+                            "Proses",
                             style: GoogleFonts.poppins(
-                              fontSize: 14,
+                              fontSize: 18,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
