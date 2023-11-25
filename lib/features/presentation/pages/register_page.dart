@@ -32,7 +32,8 @@ class _RegisterPageState extends State<RegisterPage> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded,
+              color: AppColors.primaryBlue),
         ),
       ),
       body: SingleChildScrollView(
