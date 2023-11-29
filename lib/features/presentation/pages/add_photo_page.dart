@@ -23,11 +23,11 @@ class _AddPhotoState extends State<AddPhoto> {
   late ImagePicker _imagePicker;
 
   final Map<String, String?> _imageFiles = {
-    'Gigi Depan': null,
-    'Gigi Kanan': null,
-    'Gigi Kiri': null,
-    'Gigi Atas': null,
-    'Gigi Bawah': null,
+    'Gigi Labial': null,
+    'Gigi Bukal Kanan': null,
+    'Gigi Bukal Kiri': null,
+    'Gigi Oklusal Atas': null,
+    'Gigi Oklusal Bawah': null,
   };
 
   @override
@@ -102,7 +102,7 @@ class _AddPhotoState extends State<AddPhoto> {
                   child: _buildImageCard(
                     'Gigi Labial',
                     'PHOTO 1 OF 5',
-                    _imageFiles['Gigi Depan'],
+                    _imageFiles['Gigi Labial'],
                   ),
                 ),
                 Padding(
@@ -110,7 +110,7 @@ class _AddPhotoState extends State<AddPhoto> {
                   child: _buildImageCard(
                     'Gigi Bukal Kanan',
                     'PHOTO 2 OF 5',
-                    _imageFiles['Gigi Kanan'],
+                    _imageFiles['Gigi Bukal Kanan'],
                   ),
                 ),
                 Padding(
@@ -118,7 +118,7 @@ class _AddPhotoState extends State<AddPhoto> {
                   child: _buildImageCard(
                     'Gigi Bukal Kiri',
                     'PHOTO 3 OF 5',
-                    _imageFiles['Gigi Kiri'],
+                    _imageFiles['Gigi Bukal Kiri'],
                   ),
                 ),
                 Padding(
@@ -126,7 +126,7 @@ class _AddPhotoState extends State<AddPhoto> {
                   child: _buildImageCard(
                     'Gigi Oklusal Atas',
                     'PHOTO 4 OF 5',
-                    _imageFiles['Gigi Atas'],
+                    _imageFiles['Gigi Oklusal Atas'],
                   ),
                 ),
                 Padding(
@@ -134,7 +134,7 @@ class _AddPhotoState extends State<AddPhoto> {
                   child: _buildImageCard(
                     'Gigi Oklusal Bawah',
                     'PHOTO 5 OF 5',
-                    _imageFiles['Gigi Bawah'],
+                    _imageFiles['Gigi Oklusal Bawah'],
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -152,20 +152,20 @@ class _AddPhotoState extends State<AddPhoto> {
                     onPressed: () {
                       context.read<ImgResponseBloc>().add(
                             OnCombinedImgResponse(
-                              frontImage: _imageFiles['Gigi Depan']!,
-                              rightImage: _imageFiles['Gigi Kanan']!,
-                              leftImage: _imageFiles['Gigi Kiri']!,
-                              upperImage: _imageFiles['Gigi Atas']!,
-                              lowerImage: _imageFiles['Gigi Bawah']!,
+                              frontImage: _imageFiles['Gigi Labial']!,
+                              rightImage: _imageFiles['Gigi Bukal Kanan']!,
+                              leftImage: _imageFiles['Gigi Bukal Kiri']!,
+                              upperImage: _imageFiles['Gigi Oklusal Atas']!,
+                              lowerImage: _imageFiles['Gigi Oklusal Bawah']!,
                             ),
                           );
                       context.read<ClassificationBloc>().add(
                             OnCombinedClassification(
-                              frontImage: _imageFiles['Gigi Depan']!,
-                              rightImage: _imageFiles['Gigi Kanan']!,
-                              leftImage: _imageFiles['Gigi Kiri']!,
-                              upperImage: _imageFiles['Gigi Atas']!,
-                              lowerImage: _imageFiles['Gigi Bawah']!,
+                              frontImage: _imageFiles['Gigi Labial']!,
+                              rightImage: _imageFiles['Gigi Bukal Kanan']!,
+                              leftImage: _imageFiles['Gigi Bukal Kiri']!,
+                              upperImage: _imageFiles['Gigi Oklusal Atas']!,
+                              lowerImage: _imageFiles['Gigi Oklusal Bawah']!,
                             ),
                           );
                     },
