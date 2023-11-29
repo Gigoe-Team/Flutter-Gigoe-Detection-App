@@ -119,7 +119,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
         elevation: 0,
         toolbarHeight: 80,
         title: Text(
-          "Hasil Deteksi",
+          "Hasil Pemindaian",
           style: GoogleFonts.poppins(
               color: AppColors.primaryBlue,
               fontSize: 18,
@@ -151,7 +151,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                         caries: frontCaries.length,
                         filledTooth: frontFilling.length,
                         missingTooth: frontMissing.length,
-                        title: "Gigi Depan",
+                        title: "Labial",
                         subtitle: "PHOTO 1 OF 5",
                       );
                     }
@@ -166,7 +166,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                         caries: rightCaries.length,
                         filledTooth: rightFilling.length,
                         missingTooth: rightMissing.length,
-                        title: "Gigi Kanan",
+                        title: "Bukal Kanan",
                         subtitle: "PHOTO 2 OF 5",
                       );
                     }
@@ -181,7 +181,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                         caries: leftCaries.length,
                         filledTooth: leftFilling.length,
                         missingTooth: leftMissing.length,
-                        title: "Gigi Kiri",
+                        title: "Bukal Kiri",
                         subtitle: "PHOTO 3 OF 5",
                       );
                     }
@@ -196,7 +196,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                         caries: upperCaries.length,
                         filledTooth: upperFilling.length,
                         missingTooth: upperMissing.length,
-                        title: "Gigi Atas",
+                        title: "Oklusal Atas",
                         subtitle: "PHOTO 4 OF 5",
                       );
                     }
@@ -211,7 +211,7 @@ class _ResultDetectionPageState extends State<ResultDetectionPage> {
                         caries: lowerCaries.length,
                         filledTooth: lowerFilling.length,
                         missingTooth: lowerMissing.length,
-                        title: "Gigi Bawah",
+                        title: "Oklusal Bawah",
                         subtitle: "PHOTO 5 OF 5",
                       );
                     }
@@ -539,7 +539,7 @@ class ResultDetectionLoading extends StatelessWidget {
           Row(
             children: [
               Text(
-                "Gigi Depan",
+                "Labial",
                 style: GoogleFonts.poppins(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
