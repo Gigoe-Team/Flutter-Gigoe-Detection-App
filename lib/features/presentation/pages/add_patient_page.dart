@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gigoe_detection_app/core/utils/app_colors.dart';
-import 'package:gigoe_detection_app/features/presentation/widgets/custom_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddPatient extends StatefulWidget {
