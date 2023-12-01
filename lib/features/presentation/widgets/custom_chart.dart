@@ -1,7 +1,7 @@
+import 'package:google_fonts/google_fonts.dart';
+import '../../../core/utils/app_colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:gigoe_detection_app/core/utils/app_colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomChart extends StatefulWidget {
   const CustomChart({super.key, required this.result});
