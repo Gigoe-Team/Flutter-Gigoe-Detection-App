@@ -1,14 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/bloc/data_chart_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/user_page.dart';
-import 'package:gigoe_detection_app/features/presentation/widgets/custom_chart.dart';
-import 'package:gigoe_detection_app/features/presentation/widgets/user_model.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gigoe_detection_app/core/utils/app_colors.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../core/utils/app_colors.dart';
+import 'package:flutter/material.dart';
+import '../widgets/custom_chart.dart';
+import '../bloc/data_chart_bloc.dart';
+import '../widgets/user_model.dart';
+import 'user_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -112,15 +112,6 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       const ProfileAvatarUser(),
-                      // const CircleAvatar(
-                      //   backgroundColor: AppColors.softWhite,
-                      //   radius: 30,
-                      //   child: Icon(
-                      //     Icons.person,
-                      //     size: 40,
-                      //     color: AppColors.primaryBlue,
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
@@ -146,11 +137,6 @@ class _HomePageState extends State<HomePage> {
                 autoPlayInterval: const Duration(seconds: 5),
                 enlargeCenterPage: true,
                 enableInfiniteScroll: true,
-                // onPageChanged: (index, reason) {
-                //   if (kDebugMode) {
-                //     print('Halaman berubah ke: $index');
-                //   }
-                // },
               ),
             ),
             Padding(
@@ -207,14 +193,6 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Text(
-                      //   "Keterangan :",
-                      //   style: GoogleFonts.poppins(
-                      //       color: AppColors.darkBlue,
-                      //       fontSize: 18,
-                      //       fontWeight: FontWeight.bold),
-                      // ),
-                      // const SizedBox(height: 10),
                       Text(
                         "BN : Baiturrahman\nKA : Kuta Alam\nMX : Meuraxa\nSK : Syiah Kuala\nLB : Lueng Bata\nKR : Kuta Raja\nBR : Banda Raya\nJB : Jaya Baru\nUK : Ulee Kareng",
                         style: GoogleFonts.poppins(
@@ -222,21 +200,6 @@ class _HomePageState extends State<HomePage> {
                             fontSize: 14,
                             fontWeight: FontWeight.normal),
                       ),
-                      // Text(
-                      //   "X = kode alamat berdasarkan kecamatan\nY = jumlah total gigi DMF dari semua pasien per kecamatan.",
-                      //   style: GoogleFonts.poppins(
-                      //       fontSize: 13, fontWeight: FontWeight.normal),
-                      // ),
-                      // Text(
-                      //   "Kecamatan di Kota Banda Aceh:",
-                      //   style: GoogleFonts.poppins(
-                      //       fontSize: 16, fontWeight: FontWeight.w600),
-                      // ),
-                      // Text(
-                      //   "BN : Baiturrahman\nKA : Kuta Alam\nMX : Meuraxa\nSK : Syiah Kuala\nLB : Lueng Bata\nKR : Kuta Raja\nBR : Banda Raya\nJB : Jaya Baru\nUK : Ulee Kareng",
-                      //   style: GoogleFonts.poppins(
-                      //       fontSize: 14, fontWeight: FontWeight.normal),
-                      // ),
                     ],
                   ),
                 ),
