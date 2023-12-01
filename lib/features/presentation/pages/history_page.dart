@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:gigoe_detection_app/core/utils/app_colors.dart';
+import '../../../Firebase/fetch_data_pasien.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gigoe_detection_app/Firebase/fetch_data_pasien.dart';
+import '../../../core/utils/app_colors.dart';
+import 'package:flutter/material.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
