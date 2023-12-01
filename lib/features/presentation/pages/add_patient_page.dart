@@ -1,10 +1,10 @@
-import 'package:date_time_picker/date_time_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:date_time_picker/date_time_picker.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../../core/utils/app_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gigoe_detection_app/core/utils/app_colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AddPatient extends StatefulWidget {
   const AddPatient({Key? key}) : super(key: key);
