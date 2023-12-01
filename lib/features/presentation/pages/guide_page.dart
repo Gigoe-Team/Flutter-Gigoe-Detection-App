@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../../../core/utils/app_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:gigoe_detection_app/core/utils/app_colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class GuidePage extends StatefulWidget {
   const GuidePage({super.key});
