@@ -1,16 +1,16 @@
+import 'features/presentation/bloc/classification_bloc.dart';
+import 'features/presentation/widgets/bottom_nav_bar.dart';
+import 'features/presentation/bloc/img_response_bloc.dart';
+import 'features/presentation/pages/add_photo_page.dart';
+import 'features/presentation/bloc/data_chart_bloc.dart';
+import 'features/presentation/pages/welcome_page.dart';
+import 'features/presentation/pages/splash_page.dart';
+import 'features/presentation/pages/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/bloc/classification_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/bloc/img_response_bloc.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/add_photo_page.dart';
-import 'package:gigoe_detection_app/features/presentation/pages/login_page.dart';
-import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
 import 'di.dart' as di;
-import 'features/presentation/bloc/data_chart_bloc.dart';
-import 'features/presentation/pages/splash_page.dart';
-import 'features/presentation/pages/welcome_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
