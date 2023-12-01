@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gigoe_detection_app/Firebase/auth.dart';
-import 'package:gigoe_detection_app/features/presentation/widgets/bottom_nav_bar.dart';
+import '../../../core/utils/app_colors.dart';
+import '../widgets/bottom_nav_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import '../../../Firebase/auth.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
