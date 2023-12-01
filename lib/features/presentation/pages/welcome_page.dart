@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gigoe_detection_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../widgets/custom_button.dart';
+import 'package:gigoe_detection_app/features/presentation/widgets/custom_button.dart';
 import 'login_page.dart';
 import 'register_page.dart';
 
@@ -60,13 +59,6 @@ class WelcomePage extends StatelessWidget {
                   }),
                 );
               },
-              // onPressed: () {
-              //   Navigator.of(context).pushReplacement(
-              //     MaterialPageRoute(
-              //       builder: (BuildContext context) => const RegisterPage(),
-              //     ),
-              //   );
-              // },
               btnText: "Daftar Akun",
             ),
             const SizedBox(height: 10),
@@ -83,13 +75,6 @@ class WelcomePage extends StatelessWidget {
               foregroundColor: AppColors.darkBlue,
               backgroundColor: Colors.white,
               textColor: AppColors.primaryBlue,
-              // onPressed: () {
-              //   Navigator.of(context).pushReplacement(
-              //     MaterialPageRoute(
-              //       builder: (BuildContext context) => const LoginPage(),
-              //     ),
-              //   );
-              // },
             ),
           ],
         ),
