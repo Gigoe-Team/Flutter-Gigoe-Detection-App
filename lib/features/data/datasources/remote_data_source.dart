@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-
 import '../../../core/error/exceptions.dart';
 import '../models/caries_model.dart';
 
